@@ -32,8 +32,22 @@ resource "github_team" "atk4_maintainers" {
   description = "Approval rights for all ATK repositories"
 }
 
+resource "github_team_membership" "atk4_maintainer_member" {
+  for_each = toset(local.github_maintainers)
+  team_id = github_team.atk4_maintainers.id
+  username = each.value
+  role = "member"
+}
 
 resource "github_team" "atk4_contributors" {
   name = "Agile Toolkit Regular Contributor"
   description = "Creating branches and pull requests in ATK repositories"
 }
+
+resource "github_team_membership" "atk4_maintainer_member" {
+  for_each = toset(local.github_maintainers)
+  team_id = github_team.atk4_maintainers.id
+  username = each.value
+  role = "owner"
+}
+
