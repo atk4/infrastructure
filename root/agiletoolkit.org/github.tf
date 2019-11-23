@@ -30,6 +30,7 @@ resource "github_membership" "atk4_owners" {
 resource "github_team" "atk4_maintainers" {
   name = "Agile Toolkit Maintainers"
   description = "Approval rights for all ATK repositories"
+  privacy = "closed"
 }
 
 resource "github_team_membership" "atk4_maintainer_member" {
@@ -44,7 +45,7 @@ resource "github_team" "atk4_contributors" {
   description = "Creating branches and pull requests in ATK repositories"
 }
 
-resource "github_team_membership" "atk4_maintainer_member" {
+resource "github_team_membership" "atk4_contributor_owner" {
   for_each = toset(local.github_maintainers)
   team_id = github_team.atk4_maintainers.id
   username = each.value
