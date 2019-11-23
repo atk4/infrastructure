@@ -43,6 +43,9 @@ resource "github_team_repository" "contributor_team" {
 resource "github_branch_protection" "addon-develop" {
   branch = "develop"
   repository = github_repository.addon.name
+  required_pull_request_reviews {
+    required_approving_review_count = 1
+  }
 }
 
 resource "github_branch_protection" "addon-master" {
