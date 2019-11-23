@@ -71,3 +71,11 @@ resource "tfe_variable" "tfe_var7" {
   key = "TF_VAR_TFE_ORG"
   value = var.b-infra
 }
+
+variable "GITHUB_TOKEN" {}
+resource "tfe_variable" "GITHUB_TOKEN" {
+  workspace_id = tfe_workspace.tfe.id
+  category = "env"
+  key = "GITHUB_TOKEN"
+  value = var.GITHUB_TOKEN
+}
