@@ -30,6 +30,16 @@ resource "github_team_repository" "maintainer_team" {
 
 resource "github_team_repository" "collaborator_team" {
   repository = github_repository.addon.name
-  team_id = var.maintainer_team_id
+  team_id = var.contributor_team_id
   permission = "push"
+}
+
+resource "github_branch_protection" "addon-develop" {
+  branch = "develop"
+  repository = github_repository.addon.name
+}
+
+resource "github_branch_protection" "addon-develop" {
+  branch = "master"
+  repository = github_repository.addon.name
 }
