@@ -3,6 +3,8 @@ variable "description" { }
 variable "topics" {
   default = []
 }
+variable maintainer_team_id {}
+variable contributor_team_id {}
 
 resource "github_repository" "addon" {
   name = var.name
@@ -18,4 +20,16 @@ resource "github_repository" "addon" {
   has_issues = true
   has_downloads = false
   topics = concat(["agile","atk4","php"], var.topics)
+}
+
+resource "github_team_repository" "maintainer_team" {
+  repository = github_repository.addon.name
+  team_id = var.maintainer_team_id
+  permission = "admin"
+}
+
+resource "github_team_repository" "collaborator_team" {
+  repository = github_repository.addon.name
+  team_id = var.maintainer_team_id
+  permission = "push"
 }
