@@ -7,6 +7,10 @@ variable "topics" {
 resource "github_repository" "addon" {
   name = var.name
   description = var.description
+  lifecycle {
+    prevent_destroy = true
+  }
+
 
   homepage_url = "https://agiletoolkit.org/"
   has_wiki = true

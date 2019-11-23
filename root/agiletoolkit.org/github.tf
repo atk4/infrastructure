@@ -6,6 +6,7 @@ locals {
   github_owners = [
     "ibelar",
     "DarkSide666",
+    "KraKraDooh"
   ]
 
   github_maintainers = [
