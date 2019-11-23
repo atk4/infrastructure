@@ -53,6 +53,7 @@ resource "tfe_variable" "tfe_var1" {
   category = "env"
   key = "DIGITALOCEAN_TOKEN"
   value = var.e-do-token
+  sensitive = true
 }
 
 
