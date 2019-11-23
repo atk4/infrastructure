@@ -44,7 +44,7 @@ resource "tfe_workspace" "tfe" {
   auto_apply = true
   queue_all_runs = false
   lifecycle {
-    ignore_changes = ["vcs_repo"]
+    ignore_changes = [vcs_repo]
   }
 }
 
