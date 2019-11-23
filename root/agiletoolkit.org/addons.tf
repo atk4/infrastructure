@@ -4,9 +4,7 @@ module "atk4-login" {
   description = "Add-on implementing User Login, Registration, Management and Password (www.agiletoolkit.org)"
   topics = ["authentication", "login"]
 
-  maintainer_team_ids = [
-    github_team.atk4_owners.id,
-    github_team.atk4_maintainers.id
-  ]
-  contributor_team_ids = [ github_team.atk4_contributors.id ]
+  owner_team_id = github_team.atk4_owners.id
+  maintainers = concat(local.github_owners, local.github_contributors)
+  contributors = local.github_contributors
 }

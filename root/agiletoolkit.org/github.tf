@@ -40,7 +40,7 @@ resource "github_team_membership" "atk4_owner_member" {
   username = each.value
   role = "member"
 }
-
+/*
 ####### MAINTAINERS, managed by owners
 resource "github_team" "atk4_maintainers" {
   name = "Agile Toolkit Maintainers"
@@ -89,4 +89,4 @@ resource "github_team_membership" "atk4_contributor_member" {
   username = each.value
   role = "member"
 }
-
+*/

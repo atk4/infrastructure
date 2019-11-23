@@ -3,10 +3,11 @@ variable "description" { }
 variable "topics" {
   default = []
 }
-variable maintainer_team_ids {
+variable owner_team_id { }
+variable maintainers {
   type = list(string)
 }
-variable contributor_team_ids {
+variable contributors {
   type = list(string)
 }
 
@@ -26,19 +27,27 @@ resource "github_repository" "addon" {
   topics = concat(["agile","atk4","php"], var.topics)
 }
 
-resource "github_team_repository" "maintainer_team" {
-  for_each = toset(var.maintainer_team_ids)
+resource "github_team_repository" "owner_team" {
   repository = github_repository.addon.name
-  team_id = each.value
+  team_id = var.owner_team_id
   permission = "admin"
 }
 
-resource "github_team_repository" "contributor_team" {
-  for_each = toset(var.contributor_team_ids)
+resource "github_repository_collaborator" "maintainer" {
+  for_each = toset(var.maintainers)
   repository = github_repository.addon.name
-  team_id = each.value
+  username = each.value
+  permission = "admin"
+}
+
+resource "github_repository_collaborator" "contributors" {
+  for_each = toset(var.contributors)
+  repository = github_repository.addon.name
+  username = each.value
   permission = "push"
 }
+
+
 
 resource "github_branch_protection" "addon-develop" {
   branch = "develop"
