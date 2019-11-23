@@ -8,6 +8,7 @@ locals {
     "DarkSide666",
     "KraKraDooh"
   ]
+
   github_maintainers = [
     "abbadon1334",
     "acicovic",
