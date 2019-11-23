@@ -55,6 +55,7 @@ resource "github_repository_collaborator" "contributor" {
 resource "github_branch_protection" "addon-develop" {
   branch = "develop"
   repository = github_repository.addon.name
+  required_status_checks {}
   required_pull_request_reviews {
     required_approving_review_count = 1
   }
