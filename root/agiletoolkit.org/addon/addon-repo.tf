@@ -39,7 +39,7 @@ resource "github_branch_protection" "addon-develop" {
   repository = github_repository.addon.name
 }
 
-resource "github_branch_protection" "addon-develop" {
+resource "github_branch_protection" "addon-master" {
   branch = "master"
   repository = github_repository.addon.name
 }
