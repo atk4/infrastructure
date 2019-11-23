@@ -3,12 +3,13 @@ variable "description" { }
 variable "topics" {
   default = []
 }
-variable owner_team_id { }
-variable maintainers {
-  type = list(string)
-}
-variable contributors {
-  type = list(string)
+
+variable "access" {
+  type = object({
+    owner_team_id = string
+    maintainers = list(string)
+    contributors = list(string)
+  })
 }
 
 resource "github_repository" "addon" {
@@ -29,19 +30,19 @@ resource "github_repository" "addon" {
 
 resource "github_team_repository" "owner_team" {
   repository = github_repository.addon.name
-  team_id = var.owner_team_id
+  team_id = var.access.owner_team_id
   permission = "admin"
 }
 
 resource "github_repository_collaborator" "maintainer" {
-  for_each = toset(var.maintainers)
+  for_each = toset(var.access.maintainers)
   repository = github_repository.addon.name
   username = each.value
   permission = "admin"
 }
 
 resource "github_repository_collaborator" "contributor" {
-  for_each = toset(var.contributors)
+  for_each = toset(var.access.contributors)
   repository = github_repository.addon.name
   username = each.value
   permission = "push"
