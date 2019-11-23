@@ -21,7 +21,6 @@ resource "github_repository" "addon" {
 
   allow_merge_commit = false
   allow_rebase_merge = false
-  hea
 
   homepage_url = "https://agiletoolkit.org/"
   has_wiki = false
