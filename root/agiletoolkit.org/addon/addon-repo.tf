@@ -19,8 +19,8 @@ resource "github_repository" "addon" {
 
 
   homepage_url = "https://agiletoolkit.org/"
-  has_wiki = true
-  has_projects = true
+  has_wiki = false
+  has_projects = false
   has_issues = true
   has_downloads = false
   topics = concat(["agile","atk4","php"], var.topics)
