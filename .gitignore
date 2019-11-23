@@ -1,1 +1,5 @@
 bootstrap.tfvars
+terraform.tfstate
+terraform.tfstate terraform.tfstate.backup
+terraform.tfstate.backup
+.terraform
