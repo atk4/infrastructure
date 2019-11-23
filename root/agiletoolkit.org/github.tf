@@ -70,6 +70,13 @@ resource "github_team" "atk4_contributors" {
 }
 
 resource "github_team_membership" "atk4_contributor_maintainer" {
+  for_each = toset(local.github_owners)
+  team_id = github_team.atk4_contributors.id
+  username = each.value
+  role = "maintainer"
+}
+
+resource "github_team_membership" "atk4_contributor_maintainer" {
   for_each = toset(local.github_maintainers)
   team_id = github_team.atk4_contributors.id
   username = each.value
