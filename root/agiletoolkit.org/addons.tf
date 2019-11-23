@@ -5,6 +5,6 @@ module "atk4-login" {
   topics = ["authentication", "login"]
 
   owner_team_id = github_team.atk4_owners.id
-  maintainers = concat(local.github_owners, local.github_contributors)
+  maintainers = local.github_contributors
   contributors = local.github_contributors
 }
