@@ -14,7 +14,7 @@ locals {
     "acicovic",
     "PhilippGrashoff",
   ]
-  collaborators = [
+  github_contributors = [
     "gowrav-vishwakarma",
     "jancha",
     "skondakov"
@@ -50,7 +50,7 @@ resource "github_team" "atk4_maintainers" {
 
 resource "github_team_membership" "atk4_maintainer_owner" {
   for_each = toset(local.github_owners)
-  team_id = github_team.atk4_owners.id
+  team_id = github_team.atk4_maintainers.id
   username = each.value
   role = "maintainer"
 }
@@ -71,13 +71,13 @@ resource "github_team" "atk4_contributors" {
 
 resource "github_team_membership" "atk4_contributor_maintainer" {
   for_each = toset(local.github_maintainers)
-  team_id = github_team.atk4_maintainers.id
+  team_id = github_team.atk4_contributors.id
   username = each.value
   role = "maintainer"
 }
 
 resource "github_team_membership" "atk4_contributor_member" {
-  for_each = toset(local.github_maintainers)
+  for_each = toset(local.github_contributors)
   team_id = github_team.atk4_contributors.id
   username = each.value
   role = "member"
