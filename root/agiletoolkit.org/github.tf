@@ -41,7 +41,6 @@ resource "github_team_membership" "atk4_owner_member" {
   role = "member"
 }
 
-
 ####### MAINTAINERS, managed by owners
 resource "github_team" "atk4_maintainers" {
   name = "Agile Toolkit Maintainers"
@@ -49,18 +48,18 @@ resource "github_team" "atk4_maintainers" {
   privacy = "closed"
 }
 
+resource "github_team_membership" "atk4_maintainer_owner" {
+  for_each = toset(local.github_owners)
+  team_id = github_team.atk4_owners.id
+  username = each.value
+  role = "maintainer"
+}
+
 resource "github_team_membership" "atk4_maintainer_member" {
   for_each = toset(local.github_maintainers)
   team_id = github_team.atk4_maintainers.id
   username = each.value
   role = "member"
-}
-
-resource "github_team_membership" "atk4_maintainer_owner" {
-  for_each = toset(local.github_owners)
-  team_id = github_team.atk4_maintainers.id
-  username = each.value
-  role = "maintainer"
 }
 
 ####### CONTRIBUTORS, managed by maintainers
