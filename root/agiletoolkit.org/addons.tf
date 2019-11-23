@@ -19,7 +19,7 @@ module "atk4-login" {
 module "atk4-chart" {
   source = "./addon"
   name = "chart"
-  description = "Chart add-on for Agile Toolkit",
+  description = "Chart add-on for Agile Toolkit"
   topics = ["chart", "graph"]
 
   access = local.addon
