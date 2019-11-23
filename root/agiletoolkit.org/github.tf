@@ -66,6 +66,7 @@ resource "github_team_membership" "atk4_maintainer_member" {
 resource "github_team" "atk4_contributors" {
   name = "Agile Toolkit Regular Contributor"
   description = "Creating branches and pull requests in ATK repositories"
+  privacy = "closed"
 }
 
 resource "github_team_membership" "atk4_contributor_maintainer" {
