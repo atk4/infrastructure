@@ -4,7 +4,6 @@ provider "github" {
 
 locals {
   github_owners = [
-    "romaninsh",
     "ibelar",
     "DarkSide666",
     "KraKraDooh"
@@ -24,4 +23,5 @@ locals {
 resource "github_membership" "atk4_owners" {
   for_each = toset(local.github_owners)
   username = each.value
+  role = "member"
 }
