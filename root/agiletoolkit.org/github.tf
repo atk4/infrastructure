@@ -45,10 +45,17 @@ resource "github_team" "atk4_contributors" {
   description = "Creating branches and pull requests in ATK repositories"
 }
 
-resource "github_team_membership" "atk4_contributor_owner" {
+resource "github_team_membership" "atk4_contributor_maintainer" {
   for_each = toset(local.github_maintainers)
   team_id = github_team.atk4_maintainers.id
   username = each.value
-  role = "owner"
+  role = "maintainer"
+}
+
+resource "github_team_membership" "atk4_contributor_member" {
+  for_each = toset(local.github_maintainers)
+  team_id = github_team.atk4_maintainers.id
+  username = each.value
+  role = "member"
 }
 
