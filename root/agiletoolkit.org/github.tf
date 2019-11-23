@@ -54,7 +54,7 @@ resource "github_team_membership" "atk4_contributor_maintainer" {
 
 resource "github_team_membership" "atk4_contributor_member" {
   for_each = toset(local.github_maintainers)
-  team_id = github_team.atk4_maintainers.id
+  team_id = github_team.atk4_contributors.id
   username = each.value
   role = "member"
 }
