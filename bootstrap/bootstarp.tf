@@ -51,8 +51,8 @@ resource "tfe_workspace" "tfe" {
 resource "tfe_variable" "tfe_var1" {
   workspace_id = tfe_workspace.tfe.id
   category = "env"
-  key = "AWS_REGION"
-  value = var.a-region
+  key = "DIGITALOCEAN_TOKEN"
+  value = var.e-do-token
 }
 
 
