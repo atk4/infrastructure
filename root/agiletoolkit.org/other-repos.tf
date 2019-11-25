@@ -1,4 +1,4 @@
-resource "github_repository" "addon" {
+resource "github_repository" "image" {
   name = "image"
   description = "Dokker build image for ATK pipelines"
   lifecycle {
