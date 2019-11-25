@@ -12,6 +12,16 @@ variable "access" {
   })
 }
 
+variable "has_projects" {
+  type = bool
+  default = false
+}
+
+variable "has_wiki" {
+  type = bool
+  default = false
+}
+
 resource "github_repository" "addon" {
   name = var.name
   description = var.description
@@ -23,8 +33,8 @@ resource "github_repository" "addon" {
   allow_rebase_merge = false
 
   homepage_url = "https://agiletoolkit.org/"
-  has_wiki = false
-  has_projects = false
+  has_wiki = var.has_projects
+  has_projects = var.has_projects
   has_issues = true
   has_downloads = false
   topics = concat(["agile","atk4","php"], var.topics)
