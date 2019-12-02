@@ -6,12 +6,25 @@ locals {
   }
 }
 
+# After adding new repo, run:
+# terraform import module.agiletoolkit.module.atk4-dsql.github_repository.addon dsql
 
 module "atk4-core" {
   source = "./addon"
   name = "core"
   description = "Core Object Traits for Agile Toolkit"
   topics = ["core", "traits"]
+
+  access = local.addon
+}
+
+module "atk4-dsql" {
+  source = "./addon"
+  name = "dsql"
+  description = "Object-Oriented SQL Query Builder"
+  topics = ["sql", "dsql", "query"]
+
+  has_wiki = true
 
   access = local.addon
 }
