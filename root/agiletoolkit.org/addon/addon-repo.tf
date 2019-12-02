@@ -22,6 +22,16 @@ variable "has_wiki" {
   default = false
 }
 
+variable "protect_develop" {
+  type = bool
+  default = true
+}
+
+variable "protect_master" {
+  type = bool
+  default = true
+}
+
 resource "github_repository" "addon" {
   name = var.name
   description = var.description
@@ -31,6 +41,7 @@ resource "github_repository" "addon" {
 
   allow_merge_commit = false
   allow_rebase_merge = false
+
 
   homepage_url = "https://agiletoolkit.org/"
   has_wiki = var.has_projects
@@ -63,6 +74,8 @@ resource "github_repository_collaborator" "contributor" {
 
 
 resource "github_branch_protection" "addon-develop" {
+  count = var.protect_develop ? 1 : 0
+
   branch = "develop"
   repository = github_repository.addon.name
   required_status_checks {}
@@ -72,6 +85,8 @@ resource "github_branch_protection" "addon-develop" {
 }
 
 resource "github_branch_protection" "addon-master" {
+  count = var.protect_master ? 1 : 0
+
   branch = "master"
   repository = github_repository.addon.name
 }

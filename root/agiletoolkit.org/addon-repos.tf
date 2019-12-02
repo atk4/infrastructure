@@ -42,6 +42,8 @@ module "atk4-filestore" {
   description = "Implements integration between ATK UI and FlySystem"
   topics = ["filestore"]
 
+  protect_develop = false
+
   access = local.addon
 }
 
@@ -59,6 +61,8 @@ module "atk4-invoice" {
   name = "invoice"
   description = "UI for entering and displaying invoices"
   topics = ["invoice"]
+
+  protect_master = false
 
   access = local.addon
 }
@@ -86,6 +90,8 @@ module "atk4-workflow" {
   name = "workflow"
   description = "Implement workflow management in ATK and Saasty using Actions"
   topics = ["workflow"]
+
+  protect_develop = false
 
   access = local.addon
 }
@@ -132,6 +138,8 @@ module "atk4-warehouse" {
   description = "Sample Warehouse app in Agile Toolkit"
   topics = ["warehouse"]
 
+  protect_develop = false
+
   access = local.addon
 }
 
@@ -141,6 +149,8 @@ module "atk4-agiletoolkit-bundle" {
   description = "Repository for building archive file for www.agiletoolkit.org DOWNLOAD button."
   topics = ["agiletoolkit-bundle"]
 
+  protect_develop = false
+
   access = local.addon
 }
 
@@ -149,6 +159,8 @@ module "atk4-money-lending-tutorial" {
   name = "money-lending-tutorial"
   description = "Money Lending App - Agile Toolkit Tutorial"
   topics = ["money-lending-tutorial"]
+
+  protect_develop = false
 
   access = local.addon
 }
