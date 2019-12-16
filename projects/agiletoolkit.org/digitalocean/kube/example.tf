@@ -58,3 +58,27 @@ resource "kubernetes_deployment" "example" {
     }
   }
 }
+
+resource "random_password" "db_password" {
+  length = 10
+}
+
+resource "helm_release" "db" {
+  chart = "db"
+  name = "stable/mariadb"
+
+  set {
+    name  = "mariadbUser"
+    value = "atk4"
+  }
+
+  set {
+    name = "mariadbPassword"
+    value = random_password.db_password.result
+  }
+
+  set_string {
+    name = "image.tags"
+    value = "registry\\.io/terraform-provider-helm\\,example\\.io/terraform-provider-helm"
+  }
+}
