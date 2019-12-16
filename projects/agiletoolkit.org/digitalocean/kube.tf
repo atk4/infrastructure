@@ -24,7 +24,7 @@ provider "kubernetes" {
 
 module "tiller" {
   source  = "github.com/sagikazarmark/terraform-tiller"
-  version = "~> 0.1.0"
+  #version = "~> 0.1.0"
 }
 
 provider helm {
