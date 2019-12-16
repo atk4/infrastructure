@@ -2,7 +2,7 @@ terraform {
   backend "remote" {
     organization = "atk4"
     workspaces {
-      name = "atk4-github"
+      name = "atk4-digitalocean"
     }
   }
 }
