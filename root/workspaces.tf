@@ -2,7 +2,7 @@ variable "GITHUB_OAUTH" {}
 variable "TFE_ORG" {}
 
 
-module "agiletoolkit.org.github" {
+module "agiletoolkit_org_github" {
   source = "./workspace"
   name = "agiletoolkit.org-github"
   path = "projects/agiletoolkit.org/github"
