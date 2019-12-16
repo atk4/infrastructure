@@ -57,35 +57,29 @@ resource "tfe_workspace" "tfe" {
   }
 }
 
-resource "tfe_variable" "tfe_var1" {
+variable "GITHUB_TOKEN" {}
+locals {
+  env = {
+    DIGITALOCEAN_TOKEN: var.e-do-token
+    TFE_TOKEN: tfe_organization_token.org_token.token
+    TF_VAR_GITHUB_OAUTH: tfe_oauth_client.oauth.oauth_token_id
+    GITHUB_TOKEN: var.GITHUB_TOKEN
+  }
+}
+
+resource "tfe_variable" "tfe_var" {
+  for_each = local.env
   workspace_id = tfe_workspace.tfe.id
   category = "env"
-  key = "DIGITALOCEAN_TOKEN"
-  value = var.e-do-token
+  key = each.key
+  value = each.value
   sensitive = true
 }
 
 
-resource "tfe_variable" "tfe_var6" {
-  workspace_id = tfe_workspace.tfe.id
-  category = "env"
-  key = "TFE_TOKEN"
-  value = tfe_organization_token.org_token.token
-  sensitive = true
-}
-
-resource "tfe_variable" "tfe_var7" {
+resource "tfe_variable" "tfe_var_org" {
   workspace_id = tfe_workspace.tfe.id
   category = "env"
   key = "TF_VAR_TFE_ORG"
   value = var.b-infra
-}
-
-variable "GITHUB_TOKEN" {}
-resource "tfe_variable" "GITHUB_TOKEN" {
-  workspace_id = tfe_workspace.tfe.id
-  category = "env"
-  key = "GITHUB_TOKEN"
-  value = var.GITHUB_TOKEN
-  sensitive = true
 }
