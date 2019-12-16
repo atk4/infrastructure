@@ -5,7 +5,7 @@ resource "kubernetes_service" "example" {
   }
   spec {
     type = "LoadBalancer"
-    selector {
+    selector = {
       app: example
     }
     port {
