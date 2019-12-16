@@ -6,7 +6,7 @@ resource "kubernetes_service" "example" {
   spec {
     type = "LoadBalancer"
     selector = {
-      app: example
+      app = example
     }
     port {
       port = 80
@@ -24,13 +24,13 @@ resource "kubernetes_deployment" "example" {
     replicas = 2
     selector {
       match_labels = {
-        app: example
+        app =  example
       }
     }
     template {
       metadata {
         labels = {
-          app: example
+          app =  example
         }
       }
       spec {
