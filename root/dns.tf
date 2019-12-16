@@ -1,5 +1,5 @@
-
-resource "digitalocean_domain" "agiletoolkit-org" {
-  name = "agiletoolkit.org"
-}
-
+//
+//resource "digitalocean_domain" "agiletoolkit-org" {
+//  name = "agiletoolkit.org"
+//}
+//
