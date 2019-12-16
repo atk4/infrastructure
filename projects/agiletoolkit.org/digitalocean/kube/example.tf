@@ -1,5 +1,9 @@
 
 resource "kubernetes_service" "example" {
+  lifecycle {
+    //noinspection HILUnresolvedReference
+    ignore_changes = [metadata[0].annotations]
+  }
   metadata {
     name = "example"
   }
