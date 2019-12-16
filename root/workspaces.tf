@@ -14,10 +14,9 @@ module "agiletoolkit_org_github" {
   env = {
     GITHUB_TOKEN: var.GITHUB_TOKEN
   }
-
 }
 
-module "agiletoolkit_org_github" {
+module "atk4-digitalocean" {
   source = "./workspace"
   name = "atk4-digitalocean"
   path = "projects/agiletoolkit.org/digitalocean"
@@ -27,5 +26,4 @@ module "agiletoolkit_org_github" {
   env = {
     DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
   }
-
 }
