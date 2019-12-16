@@ -17,10 +17,9 @@ module "agiletoolkit_org_github" {
 
 }
 
-/*
 module "agiletoolkit_org_github" {
   source = "./workspace"
-  name = "agiletoolkit_org_digitalocean"
+  name = "atk4-digitalocean"
   path = "projects/agiletoolkit.org/digitalocean"
   github_oauth = var.GITHUB_OAUTH
   tfe_org = var.TFE_ORG
@@ -30,4 +29,3 @@ module "agiletoolkit_org_github" {
   }
 
 }
-*/
