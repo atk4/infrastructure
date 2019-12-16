@@ -18,18 +18,26 @@ provider "kubernetes" {
   host  = digitalocean_kubernetes_cluster.atk.endpoint
   token = digitalocean_kubernetes_cluster.atk.kube_config[0].token
   cluster_ca_certificate = base64decode(
-  digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
+    digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
   )
 }
 
 provider helm {
+
+  service_account = "tiller"
+  namespace = "kube-system"
+  install_tiller = true
+  debug = true
+  insecure = true
+  tiller_image    = "gcr.io/kubernetes-helm/tiller:v2.11.0"
+
   kubernetes {
     load_config_file = false
 
     host  = digitalocean_kubernetes_cluster.atk.endpoint
     token = digitalocean_kubernetes_cluster.atk.kube_config[0].token
     cluster_ca_certificate = base64decode(
-    digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
+      digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
     )
   }
 }
