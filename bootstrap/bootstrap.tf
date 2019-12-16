@@ -60,10 +60,11 @@ resource "tfe_workspace" "tfe" {
 variable "GITHUB_TOKEN" {}
 locals {
   env = {
-    DIGITALOCEAN_TOKEN: var.e-do-token
-    TFE_TOKEN: tfe_organization_token.org_token.token
+    TF_VAR_DIGITALOCEAN_TOKEN: var.e-do-token
     TF_VAR_GITHUB_OAUTH: tfe_oauth_client.oauth.oauth_token_id
-    GITHUB_TOKEN: var.GITHUB_TOKEN
+    TF_VAR_GITHUB_TOKEN: var.GITHUB_TOKEN
+
+    TFE_TOKEN: tfe_organization_token.org_token.token
   }
 }
 
