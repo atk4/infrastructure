@@ -23,13 +23,13 @@ resource "kubernetes_deployment" "example" {
   spec {
     replicas = 2
     selector {
-      match_labels {
+      match_labels = {
         app: example
       }
     }
     template {
       metadata {
-        labels {
+        labels = {
           app: example
         }
       }
