@@ -1,3 +1,9 @@
+resource "kubernetes_namespace" "example" {
+  metadata {
+    name = "example"
+  }
+}
+
 
 resource "kubernetes_service" "example" {
   lifecycle {
@@ -6,6 +12,7 @@ resource "kubernetes_service" "example" {
   }
   metadata {
     name = "example"
+    namespace = "example"
   }
   spec {
     type = "LoadBalancer"
@@ -23,6 +30,7 @@ resource "kubernetes_service" "example" {
 resource "kubernetes_deployment" "example" {
   metadata {
     name = "example"
+    namespace = "example"
   }
   spec {
     replicas = 2
