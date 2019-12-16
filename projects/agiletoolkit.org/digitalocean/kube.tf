@@ -22,11 +22,16 @@ provider "kubernetes" {
   )
 }
 
+module "tiller" {
+  source  = "github.com/sagikazarmark/terraform-tiller"
+  version = "~> 0.1.0"
+}
+
 provider helm {
 
   service_account = "tiller"
   namespace = "kube-system"
-  install_tiller = true
+  install_tiller = false
   debug = true
   insecure = true
   tiller_image    = "gcr.io/kubernetes-helm/tiller:v2.11.0"
