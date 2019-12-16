@@ -36,6 +36,14 @@ resource "tfe_organization_token" "org_token" {
   organization = tfe_organization.org.name
 }
 
+resource "tfe_oauth_client" "oauth" {
+  organization     = "atk4"
+  api_url          = "https://api.github.com"
+  http_url         = "https://github.com"
+  oauth_token      = var.GITHUB_TOKEN
+  service_provider = "github"
+}
+
 resource "tfe_workspace" "tfe" {
   name = "${var.b-infra}-root"
   organization = tfe_organization.org.id
@@ -43,8 +51,9 @@ resource "tfe_workspace" "tfe" {
   trigger_prefixes = ["/modules"]
   auto_apply = true
   queue_all_runs = false
-  lifecycle {
-    ignore_changes = [vcs_repo]
+  vcs_repo {
+    identifier = "atk4/infrastructure"
+    oauth_token_id = tfe_oauth_client.oauth.oauth_token_id
   }
 }
 
@@ -78,4 +87,5 @@ resource "tfe_variable" "GITHUB_TOKEN" {
   category = "env"
   key = "GITHUB_TOKEN"
   value = var.GITHUB_TOKEN
+  sensitive = true
 }
