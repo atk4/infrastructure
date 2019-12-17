@@ -63,6 +63,12 @@ resource "random_password" "db_password" {
   length = 10
 }
 
+provider "helm" {
+  kubernetes {
+
+  }
+
+}
 resource "helm_release" "db" {
   chart = "db"
   name = "stable/mariadb"

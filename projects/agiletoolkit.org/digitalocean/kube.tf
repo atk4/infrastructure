@@ -46,3 +46,6 @@ provider helm {
     )
   }
 }
+module "kube" {
+  source = "./kube"
+}
