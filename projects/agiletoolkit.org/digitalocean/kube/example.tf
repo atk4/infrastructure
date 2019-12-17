@@ -69,7 +69,6 @@ provider "helm" {
   }
 
 }
-/*
 resource "helm_release" "db" {
   chart = "db"
   name = "stable/mariadb"
@@ -89,4 +88,3 @@ resource "helm_release" "db" {
     value = "registry\\.io/terraform-provider-helm\\,example\\.io/terraform-provider-helm"
   }
 }
-*/

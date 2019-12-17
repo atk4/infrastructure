@@ -30,15 +30,11 @@ module "tiller" {
 
 
 
-/*
 provider helm {
 
-  service_account = "tiller"
-  namespace = "kube-system"
   install_tiller = false
   debug = true
   insecure = true
-  tiller_image    = "gcr.io/kubernetes-helm/tiller:v2.11.0"
 
   kubernetes {
     load_config_file = false
@@ -49,8 +45,4 @@ provider helm {
       digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
     )
   }
-}
-*/
-module "kube" {
-  source = "./kube"
 }
