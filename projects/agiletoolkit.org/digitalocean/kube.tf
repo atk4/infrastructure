@@ -28,12 +28,12 @@ module "tiller_namespace" {
 }
 
 module "resource_namespace" {
-  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-namespace?ref=v0.3.0"
+  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-namespace"
   name = "resources"
 }
 
 module "tiller_service_account" {
-  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-service-account?ref=v0.3.0"
+  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-service-account"
 
   name           = "tiller"
   namespace      = module.tiller_namespace.name
@@ -76,7 +76,7 @@ variable "tiller_version" {
   default     = "v2.11.0"
 }
 module "tiller" {
-  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-tiller?ref=v0.3.0"
+  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-tiller"
 
   tiller_service_account_name              = module.tiller_service_account.name
   tiller_service_account_token_secret_name = module.tiller_service_account.token_secret_name
