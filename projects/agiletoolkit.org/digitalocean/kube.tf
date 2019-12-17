@@ -22,11 +22,82 @@ provider "kubernetes" {
   )
 }
 
-module "tiller" {
-  source  = "github.com/sagikazarmark/terraform-tiller"
-  #version = "~> 0.1.0"
+module "tiller_namespace" {
+  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-namespace?ref=v0.3.0"
+  name = "tiller"
 }
 
+module "resource_namespace" {
+  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-namespace?ref=v0.3.0"
+  name = "resources"
+}
+
+module "tiller_service_account" {
+  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-service-account?ref=v0.3.0"
+
+  name           = "tiller"
+  namespace      = module.tiller_namespace.name
+  num_rbac_roles = 2
+
+  rbac_roles = [
+    {
+      name      = module.tiller_namespace.rbac_tiller_metadata_access_role
+      namespace = module.tiller_namespace.name
+    },
+    {
+      name      = module.resource_namespace.rbac_tiller_resource_access_role
+      namespace = module.resource_namespace.name
+    },
+  ]
+
+  labels = {
+    app = "tiller"
+  }
+}
+
+variable "tls_subject" {
+  type        = map(string)
+  default = {
+    common_name = "tiller"
+    org         = "Gruntwork"
+  }
+}
+
+variable "client_tls_subject" {
+  type        = map(string)
+  default = {
+    common_name = "admin"
+    org         = "Gruntwork"
+  }
+}
+variable "tiller_version" {
+  description = "The version of Tiller to deploy."
+  type        = string
+  default     = "v2.11.0"
+}
+module "tiller" {
+  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-tiller?ref=v0.3.0"
+
+  tiller_service_account_name              = module.tiller_service_account.name
+  tiller_service_account_token_secret_name = module.tiller_service_account.token_secret_name
+  namespace                                = module.tiller_namespace.name
+  tiller_image_version                     = var.tiller_version
+
+  #tiller_tls_gen_method   = "kubergrunt"
+  #tiller_tls_subject      = var.tls_subject
+  #private_key_algorithm   = var.private_key_algorithm
+  #private_key_ecdsa_curve = var.private_key_ecdsa_curve
+  #private_key_rsa_bits    = var.private_key_rsa_bits
+
+  #kubectl_config_context_name = var.kubectl_config_context_name
+  #kubectl_config_path         = var.kubectl_config_path
+  tiller_tls_secret_name = ""
+}
+
+
+
+
+/*
 provider helm {
 
   service_account = "tiller"
@@ -46,7 +117,7 @@ provider helm {
     )
   }
 }
-
+*/
 module "kube" {
   source = "./kube"
 }
