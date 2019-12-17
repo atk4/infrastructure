@@ -91,7 +91,7 @@ module "tiller" {
 
   #kubectl_config_context_name = var.kubectl_config_context_name
   #kubectl_config_path         = var.kubectl_config_path
-  tiller_tls_secret_name = ""
+  tiller_tls_gen_method = "provider"
 }
 
 
