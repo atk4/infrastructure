@@ -14,6 +14,7 @@ resource "digitalocean_kubernetes_cluster" "atk" {
   }
 }
 
+/*
 provider "kubernetes" {
   host  = digitalocean_kubernetes_cluster.atk.endpoint
   token = digitalocean_kubernetes_cluster.atk.kube_config[0].token
@@ -49,3 +50,4 @@ provider helm {
 module "kube" {
   source = "./kube"
 }
+*/
