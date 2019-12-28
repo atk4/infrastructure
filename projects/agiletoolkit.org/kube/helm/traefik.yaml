@@ -1,9 +1,6 @@
 acme:
   enabled: true
   email: info@agiletoolkit.org
-  httpChallenge:
-    entryPoint: web
-  caServer: https://acme-staging-v02.api.letsencrypt.org/directory
 
 dashboard:
   enabled: true

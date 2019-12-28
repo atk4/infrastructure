@@ -1,3 +1,4 @@
+/*
 resource "kubernetes_namespace" "example" {
   metadata {
     name = "example"
@@ -58,6 +59,7 @@ resource "kubernetes_deployment" "example" {
     }
   }
 }
+*/
 
 resource "random_password" "db_password" {
   length = 10
