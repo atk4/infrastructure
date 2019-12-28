@@ -25,6 +25,11 @@ module "atk4-kube" {
   tfe_org = var.TFE_ORG
 
   env = {
+    TF_VAR_KUBE_HOST: digitalocean_kubernetes_cluster.atk.endpoint
+    TF_VAR_KUBE_TOKEN: digitalocean_kubernetes_cluster.atk.kube_config[0].token
+    TF_VAR_KUBE_CERT: base64decode(
+      digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
+    )
   }
 
 }
