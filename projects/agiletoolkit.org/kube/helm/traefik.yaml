@@ -3,5 +3,5 @@ acme:
   email: info@agiletoolkit.org
 
 dashboard:
-  enabled: true
+  enabled: false
   domain: traefik.agiletoolkit.org
