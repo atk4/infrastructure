@@ -89,7 +89,6 @@ resource "helm_release" "traefik" {
   name = "traefik"
   namespace = "kube-system"
 
-  set { name = "acme.enabled" value = "true" }
-  set { name = "dashboard.enabled" value = "true" }
-  set { name = "dashboard.domain" value = "traefik.agiletoolkit.org" }
+  values = [ "${file("helm/traefik.yaml")}" ]
+
 }

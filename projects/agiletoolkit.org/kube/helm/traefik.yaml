@@ -1,0 +1,5 @@
+acme:
+  enabled: true
+dashboard:
+  enabled: true
+  domain: traefik.agiletoolkit.org
