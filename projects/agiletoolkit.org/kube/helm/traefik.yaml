@@ -1,5 +1,11 @@
 acme:
   enabled: true
+  email: info@agiletoolkit.org
+  storage: acme.json
+  httpChallenge:
+    entryPoint: web
+  caServer: https://acme-staging-v02.api.letsencrypt.org/directory
+
 dashboard:
   enabled: true
   domain: traefik.agiletoolkit.org
