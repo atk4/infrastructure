@@ -27,9 +27,7 @@ module "atk4-kube" {
   env = {
     TF_VAR_KUBE_HOST: digitalocean_kubernetes_cluster.atk.endpoint
     TF_VAR_KUBE_TOKEN: digitalocean_kubernetes_cluster.atk.kube_config[0].token
-    TF_VAR_KUBE_CERT: base64decode(
-      digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
-    )
+    TF_VAR_KUBE_CERT: digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
   }
 
 }
