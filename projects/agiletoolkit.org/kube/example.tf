@@ -61,6 +61,18 @@ resource "kubernetes_deployment" "example" {
 }
 */
 
+resource "kubernetes_secret" "do-token" {
+  metadata {
+    name = "acme-dnsprovider-config"
+    namespace = "kube-system"
+  }
+
+  data = {
+    DO_AUTH_TOKEN=var.DIGITALOCEAN_TOKEN
+  }
+
+}
+
 resource "random_password" "db_password" {
   length = 10
 }

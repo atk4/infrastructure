@@ -1,6 +1,7 @@
 variable "KUBE_HOST" {}
 variable "KUBE_TOKEN" {}
 variable "KUBE_CERT" {}
+variable "DIGITALOCEAN_TOKEN" {}
 
 
 provider "kubernetes" {
