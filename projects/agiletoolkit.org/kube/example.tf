@@ -64,8 +64,8 @@ resource "random_password" "db_password" {
 }
 
 resource "helm_release" "db" {
-  name = "db"
   chart = "stable/mariadb"
+  name = "db"
 
   set {
     name  = "mariadbUser"
@@ -81,4 +81,11 @@ resource "helm_release" "db" {
     name = "image.tags"
     value = "registry\\.io/terraform-provider-helm\\,example\\.io/terraform-provider-helm"
   }
+}
+
+
+resource "helm_release" "traefik" {
+  chart = "stable/traefik"
+  name = "traefik"
+  namespace = "kube-system"
 }
