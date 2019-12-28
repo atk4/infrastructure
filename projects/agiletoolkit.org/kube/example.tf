@@ -85,7 +85,7 @@ resource "helm_release" "db" {
   }
 }
 
-
+/*
 resource "helm_release" "traefik" {
   chart = "stable/traefik"
   name = "traefik"
@@ -94,3 +94,4 @@ resource "helm_release" "traefik" {
   values = [ "${file("helm/traefik.yaml")}" ]
 
 }
+*/
