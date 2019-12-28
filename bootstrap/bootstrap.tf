@@ -63,6 +63,7 @@ locals {
     TF_VAR_DIGITALOCEAN_TOKEN: var.e-do-token
     TF_VAR_GITHUB_OAUTH: tfe_oauth_client.oauth.oauth_token_id
     TF_VAR_GITHUB_TOKEN: var.GITHUB_TOKEN
+    TF_VAR_TFE_TOKEN: tfe_organization_token.org_token.token
 
     TFE_TOKEN: tfe_organization_token.org_token.token
   }

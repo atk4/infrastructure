@@ -2,6 +2,7 @@ variable "GITHUB_OAUTH" {}
 variable "GITHUB_TOKEN" {}
 variable "TFE_ORG" {}
 variable "DIGITALOCEAN_TOKEN" {}
+variable "TFE_TOKEN" {}
 
 
 module "agiletoolkit_org_github" {
@@ -25,9 +26,12 @@ module "atk4-digitalocean" {
 
   env = {
     DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
+    TFE_TOKEN: var.TFE_TOKEN
+    TF_VAR_GITHUB_TOKEN: var.GITHUB_TOKEN
   }
 }
 
+/*
 module "atk4-kube" {
   source = "./workspace"
   name = "atk4-kube"
@@ -36,6 +40,7 @@ module "atk4-kube" {
   tfe_org = var.TFE_ORG
 
   env = {
-    DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
+    #TFE_TOKEN: var.TFE_TOKEN
   }
 }
+*/
