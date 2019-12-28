@@ -64,8 +64,8 @@ resource "random_password" "db_password" {
 }
 
 resource "helm_release" "db" {
-  chart = "db"
-  name = "stable/mariadb"
+  name = "db"
+  chart = "stable/mariadb"
 
   set {
     name  = "mariadbUser"
