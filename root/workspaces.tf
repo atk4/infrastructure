@@ -27,3 +27,15 @@ module "atk4-digitalocean" {
     DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
   }
 }
+
+module "atk4-kube" {
+  source = "./workspace"
+  name = "atk4-kube"
+  path = "projects/agiletoolkit.org/kube"
+  github_oauth = var.GITHUB_OAUTH
+  tfe_org = var.TFE_ORG
+
+  env = {
+    DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
+  }
+}
