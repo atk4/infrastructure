@@ -27,7 +27,8 @@ module "atk4-digitalocean" {
   env = {
     DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
     TFE_TOKEN: var.TFE_TOKEN
-    TF_VAR_GITHUB_TOKEN: var.GITHUB_TOKEN
+    TF_VAR_GITHUB_OAUTH: var.GITHUB_OAUTH
+    TF_VAR_TF_ORG: var.TFE_ORG
   }
 }
 

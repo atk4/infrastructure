@@ -14,6 +14,21 @@ resource "digitalocean_kubernetes_cluster" "atk" {
   }
 }
 
+variable "GITHUB_OAUTH" {}
+variable "TFE_ORG" {}
+
+module "atk4-kube" {
+  source = "../../../root/workspace"
+  name = "atk4-kube"
+  path = "projects/agiletoolkit.org/kube"
+  github_oauth = var.GITHUB_OAUTH
+  tfe_org = var.TFE_ORG
+
+  env = {
+  }
+
+}
+
 /*
 provider "kubernetes" {
   host  = digitalocean_kubernetes_cluster.atk.endpoint
