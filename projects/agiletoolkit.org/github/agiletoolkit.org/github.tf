@@ -12,11 +12,11 @@ locals {
     "abbadon1334",
     "acicovic",
     "PhilippGrashoff",
+    "skondakov",
   ]
   github_contributors = [
     "gowrav-vishwakarma",
     "jancha",
-    "skondakov"
   ]
 }
 
