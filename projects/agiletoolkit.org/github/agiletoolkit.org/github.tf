@@ -13,6 +13,7 @@ locals {
     "acicovic",
     "PhilippGrashoff",
     "skondakov",
+    "mvorisek",
   ]
   github_contributors = [
     "gowrav-vishwakarma",
