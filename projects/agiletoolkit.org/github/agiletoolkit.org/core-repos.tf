@@ -54,3 +54,12 @@ module "atk4-ui" {
   access = local.addon
 }
 
+
+module "atk4-api" {
+  source = "./addon"
+  name = "api"
+  description = "Implementation of RestAPI for Agile Data"
+  topics = ["api", "rest", "data"]
+
+  access = local.addon
+}
