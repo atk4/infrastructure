@@ -45,7 +45,7 @@ module "atk4-data" {
 module "atk4-ui" {
   source = "./addon"
   name = "ui"
-  description = "Build beautiful dynamic and interactive web UI in PHP"
+  description = "Low-code Framework for Web Apps in PHP"
   topics = ["ui", "ui-components", "crud", "grid"]
 
   has_projects = true
@@ -54,3 +54,12 @@ module "atk4-ui" {
   access = local.addon
 }
 
+
+module "atk4-api" {
+  source = "./addon"
+  name = "api"
+  description = "Implementation of RestAPI for Agile Data"
+  topics = ["api", "rest", "data"]
+
+  access = local.addon
+}
