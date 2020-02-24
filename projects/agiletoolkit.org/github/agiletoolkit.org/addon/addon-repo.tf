@@ -12,6 +12,12 @@ variable "access" {
   })
 }
 
+local "labels" {
+  value = {
+    "PHP7.3+": "FF0000"
+  }
+}
+
 variable "has_projects" {
   type = bool
   default = false
@@ -49,6 +55,13 @@ resource "github_repository" "addon" {
   has_issues = true
   has_downloads = false
   topics = concat(["agile","atk4","php"], var.topics)
+}
+
+resource "github_issue_label" "test_repo" {
+  for_each = toset(local.labels)
+  repository = github_repository.addon.name
+  name       = each.name
+  color      = each.value
 }
 
 resource "github_team_repository" "owner_team" {
