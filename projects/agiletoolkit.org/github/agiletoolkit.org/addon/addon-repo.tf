@@ -12,7 +12,7 @@ variable "access" {
   })
 }
 
-local "labels" {
+locals "labels" {
   value = {
     "PHP7.3+": "FF0000"
   }
