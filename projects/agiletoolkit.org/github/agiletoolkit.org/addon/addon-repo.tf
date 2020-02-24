@@ -12,8 +12,8 @@ variable "access" {
   })
 }
 
-locals "labels" {
-  value = {
+locals {
+  labels = {
     "PHP7.3+": "FF0000"
   }
 }
@@ -60,7 +60,7 @@ resource "github_repository" "addon" {
 resource "github_issue_label" "test_repo" {
   for_each = toset(local.labels)
   repository = github_repository.addon.name
-  name       = each.name
+  name       = each.key
   color      = each.value
 }
 
