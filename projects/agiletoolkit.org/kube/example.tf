@@ -1,3 +1,10 @@
+resource "kubernetes_namespace" "test" {
+  metadata {
+    name = "test"
+  }
+}
+
+
 /*
 resource "kubernetes_namespace" "example" {
   metadata {
