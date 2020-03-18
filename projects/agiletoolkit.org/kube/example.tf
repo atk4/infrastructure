@@ -61,6 +61,7 @@ resource "kubernetes_deployment" "example" {
 }
 */
 
+/*
 resource "kubernetes_secret" "do-token" {
   metadata {
     name = "acme-dnsprovider-config"
@@ -96,6 +97,7 @@ resource "helm_release" "db" {
     value = "registry\\.io/terraform-provider-helm\\,example\\.io/terraform-provider-helm"
   }
 }
+*/
 
 /*
 resource "helm_release" "traefik" {
