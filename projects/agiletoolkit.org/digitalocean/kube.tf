@@ -1,7 +1,7 @@
 resource "digitalocean_kubernetes_cluster" "atk" {
   name = "atk"
   region = "lon1"
-  version = "1.16.2-do.1"
+  version = "1.16.6-do.2"
   tags = ["production"]
   //noinspection MissingProperty
   node_pool {
