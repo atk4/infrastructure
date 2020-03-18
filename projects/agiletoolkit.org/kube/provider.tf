@@ -10,6 +10,7 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(var.KUBE_CERT)
 }
 
+/*
 provider helm {
 
   install_tiller = false
@@ -25,3 +26,4 @@ provider helm {
 
   }
 }
+*/
