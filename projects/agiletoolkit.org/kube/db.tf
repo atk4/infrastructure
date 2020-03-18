@@ -21,6 +21,7 @@ resource "kubernetes_secret" "db-password" {
   }
 }
 
+/*
 resource "helm_release" "db" {
   chart = "bitnami/mariadb"
   #repository = helm_repository.bitnami.name
@@ -44,4 +45,4 @@ resource "helm_release" "db" {
     value=random_password.root.result
   }
 }
-
+*/
