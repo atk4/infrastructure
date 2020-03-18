@@ -5,6 +5,8 @@ resource "kubernetes_namespace" "test" {
 }
 
 
+
+
 /*
 resource "kubernetes_namespace" "example" {
   metadata {
