@@ -104,10 +104,9 @@ resource "helm_release" "db" {
     "${file("mariadb.yaml")}"
   ]
 
-  set {
-    name = "existingSecret"
-    value = random_password.root.result
-  }
+  set { name="db.name" value="saasty" }
+  set { name="db.user" value="saasty" }
+  set { name="db.password" value=random_password.root.result }
 }
 
 /*
