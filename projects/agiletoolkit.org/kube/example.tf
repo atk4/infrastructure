@@ -82,7 +82,6 @@ resource "kubernetes_secret" "do-token" {
 
 }
 
-/*
 resource "random_password" "db_password" {
   length = 10
 }
@@ -106,7 +105,6 @@ resource "helm_release" "db" {
     value = "registry\\.io/terraform-provider-helm\\,example\\.io/terraform-provider-helm"
   }
 }
-*/
 
 /*
 resource "helm_release" "traefik" {
