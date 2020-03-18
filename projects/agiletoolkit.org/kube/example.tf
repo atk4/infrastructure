@@ -82,27 +82,31 @@ resource "kubernetes_secret" "do-token" {
 
 }
 
-resource "random_password" "db_password" {
+resource "random_password" "root" {
   length = 10
 }
 
+resource "helm_repository" "bitnami" {
+  name = "bitnami"
+  url = "https://charts.bitnami.com/bitnami"
+}
+data "helm_repository" "stable" {
+  name = "stable"
+  url  = "https://kubernetes-charts.storage.googleapis.com"
+}
+
 resource "helm_release" "db" {
-  chart = "stable/mariadb"
+  chart = "bitnami/mariadb"
+  repository = helm_repository.bitnami.name
   name = "db"
 
-  set {
-    name  = "mariadbUser"
-    value = "atk4"
-  }
+  values = [
+    "${file("mariadb.yaml")}"
+  ]
 
   set {
-    name = "mariadbPassword"
-    value = random_password.db_password.result
-  }
-
-  set_string {
-    name = "image.tags"
-    value = "registry\\.io/terraform-provider-helm\\,example\\.io/terraform-provider-helm"
+    name = "existingSecret"
+    value = random_password.root.result
   }
 }
 
