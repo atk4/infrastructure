@@ -36,23 +36,12 @@ module "atk4-kube" {
     TF_VAR_DIGITALOCEAN_TOKEN: digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
     TF_VAR_DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
   }
-
 }
 
-/*
-provider "kubernetes" {
-  host  = digitalocean_kubernetes_cluster.atk.endpoint
-  token = digitalocean_kubernetes_cluster.atk.kube_config[0].token
-  cluster_ca_certificate = base64decode(
-    digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
-  )
+resource "digitalocean_volume" "db" {
+  name = "db"
+  region = "lon1"
+  size = 100
+  description = "MySQL volume to be attached into k8s cluster"
 }
-*/
 
-
-/*
-
-module "kube" {
-  source = "./kube"
-}
-*/
