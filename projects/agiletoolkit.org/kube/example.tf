@@ -61,7 +61,6 @@ resource "kubernetes_deployment" "example" {
 }
 */
 
-/*
 resource "kubernetes_secret" "do-token" {
   metadata {
     name = "acme-dnsprovider-config"
@@ -74,6 +73,7 @@ resource "kubernetes_secret" "do-token" {
 
 }
 
+/*
 resource "random_password" "db_password" {
   length = 10
 }
