@@ -82,10 +82,6 @@ resource "kubernetes_secret" "do-token" {
 
 }
 
-resource "random_password" "root" {
-  length = 10
-}
-
 resource "helm_repository" "bitnami" {
   name = "bitnami"
   url = "https://charts.bitnami.com/bitnami"
@@ -93,20 +89,6 @@ resource "helm_repository" "bitnami" {
 data "helm_repository" "stable" {
   name = "stable"
   url  = "https://kubernetes-charts.storage.googleapis.com"
-}
-
-resource "helm_release" "db" {
-  chart = "bitnami/mariadb"
-  repository = helm_repository.bitnami.name
-  name = "db"
-
-  values = [
-    "${file("mariadb.yaml")}"
-  ]
-
-  set { name="db.name" value="saasty" }
-  set { name="db.user" value="saasty" }
-  set { name="db.password" value=random_password.root.result }
 }
 
 /*
