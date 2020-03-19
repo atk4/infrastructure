@@ -45,3 +45,17 @@ resource "digitalocean_volume" "db" {
   description = "MySQL volume to be attached into k8s cluster"
 }
 
+
+
+provider "k8s" {
+  load_config_file = "false"
+
+  host = digitalocean_kubernetes_cluster.atk.endpoint
+
+  client_certificate     = "${file("~/.kube/client-cert.pem")}"
+  client_key             = "${file("~/.kube/client-key.pem")}"
+  cluster_ca_certificate = "${file("~/.kube/cluster-ca-cert.pem")}"
+
+
+
+}

@@ -86,9 +86,14 @@ resource "helm_repository" "bitnami" {
   name = "bitnami"
   url = "https://charts.bitnami.com/bitnami"
 }
-data "helm_repository" "stable" {
-  name = "stable"
-  url  = "https://kubernetes-charts.storage.googleapis.com"
+resource "helm_repository" "argocd" {
+  name = "argo"
+  url = "https://argoproj.github.io/argo-helm"
+}
+
+resource "helm_release" "argocd" {
+  chart = "argo/argocd"
+  name = "argo"
 }
 
 /*
