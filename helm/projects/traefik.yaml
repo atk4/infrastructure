@@ -17,6 +17,8 @@ spec:
           domain: traefik.agiletoolkit.org
         rbac:
           enabled: true
+        acme:
+          enabled: true
 
 #      parameters:
 #        - name: acme.email
