@@ -28,9 +28,7 @@ spec:
           domains:
             enabled: true
             domainList:
-              - saasty.io
-              - www.saasty.io
-              - traefik.saasty.io
+              - main: www.saasty.io
 
           dnsProvider:
             name: digitalocean
