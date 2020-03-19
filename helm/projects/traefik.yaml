@@ -19,6 +19,9 @@ spec:
           enabled: true
         ssl:
           enabled: true
+          enforced: true
+        domains:
+          enabled: true
         acme:
           enabled: true
           email: me@nearly.guru
