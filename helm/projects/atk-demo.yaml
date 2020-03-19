@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: traefik
+  name: atk-demo
 spec:
   destination:
     namespace: atk-demo
