@@ -17,6 +17,8 @@ spec:
           domain: traefik.agiletoolkit.org
         rbac:
           enabled: true
+        ssl:
+          enabled: true
         acme:
           enabled: true
           email: me@nearly.guru
