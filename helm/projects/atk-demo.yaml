@@ -11,8 +11,10 @@ spec:
     repoURL: 'https://github.com/atk4/infrastructure/'
     targetRevision: HEAD
     helm:
-      value-files:
+      releaseName: atk-demo
+      valueFiles:
         - values.yaml
+
 
 
 
