@@ -17,8 +17,8 @@ spec:
         - name: accessLogs.enabled
           value: "true"
 
-#        - name: dashboard.enabled
-#          value: true
+        - name: dashboard.enabled
+          value: "true"
 #        - name: dashboard.domain
 #          value: traefik.agiletoolkit.org
 #        - name: debug.enabled
