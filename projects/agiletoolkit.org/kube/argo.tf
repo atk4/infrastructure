@@ -35,7 +35,7 @@ resource "helm_release" "argocd" {
 
   lifecycle {
     ignore_changes = [
-      set.0.value
+      values
       # password value seems to always change
     ]
   }
