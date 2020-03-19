@@ -20,13 +20,18 @@ spec:
         ssl:
           enabled: true
           enforced: true
-        domains:
-          enabled: true
         acme:
           enabled: true
           email: me@nearly.guru
           logging: true
           challengeType: "dns-01"
+          domains:
+            enabled: true
+            domainList:
+              - saasty.io
+              - www.saasty.io
+              - traefik.saasty.io
+
           dnsProvider:
             name: digitalocean
             existingSecretName: acme-dnsprovider-config
