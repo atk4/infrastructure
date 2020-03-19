@@ -82,11 +82,11 @@ resource "kubernetes_secret" "do-token" {
 
 }
 
-resource "helm_repository" "bitnami" {
+data "helm_repository" "bitnami" {
   name = "bitnami"
   url = "https://charts.bitnami.com/bitnami"
 }
-resource "helm_repository" "argocd" {
+data "helm_repository" "argocd" {
   name = "argo"
   url = "https://argoproj.github.io/argo-helm"
 }
@@ -94,7 +94,7 @@ resource "helm_repository" "argocd" {
 resource "helm_release" "argocd" {
   chart = "argo/argocd"
   name = "argo"
-  recreate_pods = "argo"
+  repository = data.helm_repository.argocd.name
 }
 
 /*
