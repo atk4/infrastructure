@@ -14,6 +14,16 @@ spec:
       parameters:
         - name: replicaCount
           value: '3'
+
+      values: |
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: traefik
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - host: www.saasty.io
+              paths: []
   project: default
   syncPolicy:
     automated:
