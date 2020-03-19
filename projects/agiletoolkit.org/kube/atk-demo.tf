@@ -2,6 +2,6 @@
 
 resource "kubernetes_namespace" "atk-ui" {
   metadata {
-    name = "atk-ui"
+    name = "atk-demo"
   }
 }
