@@ -28,10 +28,15 @@ resource "helm_release" "argocd" {
     name="server.service.type"
     value="LoadBalancer"
   }
-
   set {
     name = "configs.secret.argocdServerAdminPassword"
     value = bcrypt(random_password.argo.result)
+  }
+
+  lifecycle {
+    ignore_changes = [
+      "set.2.value" # password value seems to always change
+    ]
   }
 }
 
