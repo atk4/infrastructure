@@ -23,7 +23,7 @@ spec:
             kubernetes.io/tls-acme: "true"
           hosts:
             - host: www.saasty.io
-              paths: []
+              paths: ["/"]
   project: default
   syncPolicy:
     automated:
