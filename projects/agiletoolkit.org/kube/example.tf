@@ -92,7 +92,7 @@ data "helm_repository" "argocd" {
 }
 
 resource "helm_release" "argocd" {
-  chart = "argo/argocd"
+  chart = "argo/argo-cd"
   name = "argo"
   repository = data.helm_repository.argocd.name
 }
