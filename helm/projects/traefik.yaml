@@ -16,32 +16,33 @@ spec:
           value: me@nearly.guru
         - name: accessLogs.enabled
           value: true
-        - name: dashboard.enabled
-          value: true
-        - name: dashboard.domain
-          value: traefik.agiletoolkit.org
-        - name: debug.enabled
-          value: true
 
-        - name: rbac.enabled
-          value: true
-
-        - name: acme.enabled
-          value: true
-        - name: acme.onHostRule
-          value: true
-        - name: acme.logging
-          value: true
-        - name: acme.acmelogging
-          value: true
-        - name: acme.email
-          value: me@nearly.guru
-        - name: acme.staging
-          value: true
-        - name: acme.challengeType
-          value: dns-01
-        - name: acme.dnsProvider.name
-          value: digitalocean
+#        - name: dashboard.enabled
+#          value: true
+#        - name: dashboard.domain
+#          value: traefik.agiletoolkit.org
+#        - name: debug.enabled
+#          value: true
+#
+#        - name: rbac.enabled
+#          value: true
+#
+#        - name: acme.enabled
+#          value: true
+#        - name: acme.onHostRule
+#          value: true
+#        - name: acme.logging
+#          value: true
+#        - name: acme.acmelogging
+#          value: true
+#        - name: acme.email
+#          value: me@nearly.guru
+#        - name: acme.staging
+#          value: true
+#        - name: acme.challengeType
+#          value: dns-01
+#        - name: acme.dnsProvider.name
+#          value: digitalocean
 
 
 
