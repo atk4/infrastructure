@@ -14,7 +14,7 @@ spec:
       values: |
         dashboard:
           enabled: true
-          domain: traefik.agiletoolkit.org
+          domain: traefik.saasty.io
         rbac:
           enabled: true
         ssl:
