@@ -54,7 +54,7 @@ ingress:
     kubernetes.io/tls-acme: "true"
   hosts:
     - host: www.saasty.io
-      paths: []
+      paths: ['/']
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
