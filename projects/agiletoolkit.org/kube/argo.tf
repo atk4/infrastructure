@@ -14,6 +14,13 @@ resource "helm_release" "argocd" {
   name = "argo"
   namespace = "argocd"
   repository = data.helm_repository.argocd.url
+
+
+  set {
+    name="server.ingress.enabled"
+    value="true"
+  }
+
 }
 
 resource "kubernetes_cluster_role_binding" "argo-role-binding" {
