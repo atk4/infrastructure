@@ -19,6 +19,12 @@ spec:
           enabled: true
         acme:
           enabled: true
+          email: me@nearly.guru
+          staging: true
+          logging: true
+          challengeType: "dns-01"
+          dnsProvider:
+              name: digitalocean
 
 #      parameters:
 #        - name: acme.email
