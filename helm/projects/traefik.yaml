@@ -11,8 +11,11 @@ spec:
     repoURL: 'https://github.com/helm/charts/'
     targetRevision: HEAD
     helm:
-      valueFiles:
-        - traefik-values.yaml
+      values: |
+        dashboard:
+          enabled: true
+          domain: traefik.agiletoolkit.org
+
 #      parameters:
 #        - name: acme.email
 #          value: me@nearly.guru
