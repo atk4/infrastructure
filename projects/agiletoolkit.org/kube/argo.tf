@@ -24,7 +24,9 @@ resource "helm_release" "argocd" {
 }
 
 resource "kubernetes_cluster_role_binding" "argo-role-binding" {
-  metadata {}
+  metadata {
+    name = "argo-role-binding"
+  }
   role_ref {
     api_group = "rbac.authorization.k8s.io"
     kind = "ClusterRole"
