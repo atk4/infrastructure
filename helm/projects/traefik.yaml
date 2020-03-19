@@ -19,8 +19,8 @@ spec:
 
         - name: dashboard.enabled
           value: "true"
-#        - name: dashboard.domain
-#          value: traefik.agiletoolkit.org
+        - name: dashboard.domain
+          value: traefik.agiletoolkit.org
 #        - name: debug.enabled
 #          value: true
 #
