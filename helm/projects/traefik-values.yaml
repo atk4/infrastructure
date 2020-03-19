@@ -1,0 +1,15 @@
+dashboard:
+  enabled: true
+  domain: traefik.agiletoolkit.org
+
+
+#      parameters:
+#        - name: acme.email
+#          value: me@nearly.guru
+#        - name: accessLogs.enabled
+#          value: "true"
+#
+#        - name: dashboard.enabled
+#          value: "true"
+#        - name: dashboard.domain
+#          value: traefik.agiletoolkit.org

@@ -11,16 +11,18 @@ spec:
     repoURL: 'https://github.com/helm/charts/'
     targetRevision: HEAD
     helm:
-      parameters:
-        - name: acme.email
-          value: me@nearly.guru
-        - name: accessLogs.enabled
-          value: "true"
-
-        - name: dashboard.enabled
-          value: "true"
-        - name: dashboard.domain
-          value: traefik.agiletoolkit.org
+      valueFiles:
+        - traefik-values.yaml
+#      parameters:
+#        - name: acme.email
+#          value: me@nearly.guru
+#        - name: accessLogs.enabled
+#          value: "true"
+#
+#        - name: dashboard.enabled
+#          value: "true"
+#        - name: dashboard.domain
+#          value: traefik.agiletoolkit.org
 #        - name: debug.enabled
 #          value: true
 #
