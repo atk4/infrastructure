@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: atk-demo
+  name: test
 spec:
   destination:
     namespace: atk-demo
@@ -11,15 +11,9 @@ spec:
     repoURL: 'https://github.com/atk4/infrastructure/'
     targetRevision: HEAD
     helm:
-      releaseName: atk-demo
-      valueFiles:
-        - values.yaml
-
-
-
-
-
-
+      parameters:
+        - name: replicaCount
+          value: '3'
   project: default
   syncPolicy:
     automated:
