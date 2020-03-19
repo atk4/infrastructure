@@ -1,5 +1,27 @@
 # Create namespace "db" in kubernetes, launch mysql there and record root password into "kube-system" namespace
 
+/*
+resource "kubernetes_namespace" "db" {
+  metadata {
+    name = "db"
+  }
+}
+
+resource "random_password" "root" {
+  length = 10
+}
+
+resource "kubernetes_secret" "db-password" {
+  metadata {
+    name = "db-password"
+    namespace = "kube-system"
+  }
+
+  data = {
+    MYSQL_PASSWORD=random_password.root.result
+  }
+}
+*/
 
 /*
 resource "helm_release" "db" {

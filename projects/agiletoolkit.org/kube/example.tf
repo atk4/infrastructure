@@ -86,16 +86,6 @@ data "helm_repository" "bitnami" {
   name = "bitnami"
   url = "https://charts.bitnami.com/bitnami"
 }
-data "helm_repository" "argocd" {
-  name = "argo"
-  url = "https://argoproj.github.io/argo-helm"
-}
-
-resource "helm_release" "argocd" {
-  chart = "argo-cd"
-  name = "argo"
-  repository = data.helm_repository.argocd.url
-}
 
 /*
 resource "helm_release" "traefik" {
