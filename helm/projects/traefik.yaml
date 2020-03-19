@@ -22,7 +22,6 @@ spec:
         acme:
           enabled: true
           email: me@nearly.guru
-          staging: true
           logging: true
           challengeType: "dns-01"
           dnsProvider:
