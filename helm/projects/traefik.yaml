@@ -29,7 +29,6 @@ spec:
             enabled: true
             domainList:
               - main: www.saasty.io
-
           dnsProvider:
             name: digitalocean
             existingSecretName: acme-dnsprovider-config
