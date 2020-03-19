@@ -4,6 +4,10 @@ resource "kubernetes_namespace" "argo" {
   }
 }
 
+resource "random_password" "argo" {
+  length = 10
+}
+
 data "helm_repository" "argocd" {
   name = "argo"
   url = "https://argoproj.github.io/argo-helm"
@@ -25,6 +29,14 @@ resource "helm_release" "argocd" {
     value="LoadBalancer"
   }
 
+  set {
+    name = "configs.secret.argocdServerAdminPassword"
+    value = random_password.argo.result
+  }
+}
+
+output "argo-password" {
+  value = random_password.argo.result
 }
 
 resource "kubernetes_cluster_role_binding" "argo-role-binding" {
