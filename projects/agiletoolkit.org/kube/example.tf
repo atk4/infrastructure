@@ -94,6 +94,7 @@ resource "helm_repository" "argocd" {
 resource "helm_release" "argocd" {
   chart = "argo/argocd"
   name = "argo"
+  recreate_pods = "argo"
 }
 
 /*
