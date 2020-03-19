@@ -15,7 +15,7 @@ spec:
         - name: acme.email
           value: me@nearly.guru
         - name: accessLogs.enabled
-          value: true
+          value: "true"
 
 #        - name: dashboard.enabled
 #          value: true
