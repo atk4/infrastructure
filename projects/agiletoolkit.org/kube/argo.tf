@@ -33,6 +33,20 @@ resource "helm_release" "argocd" {
     value = bcrypt(random_password.argo.result)
   }
 
+
+  values = [
+    <<YAML
+server:
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+    hosts: ["argocd.agiletoolkit.org"]
+  extraArgs:
+    insecure: true
+YAML
+  ]
+
   lifecycle {
     ignore_changes = [
       set
