@@ -2,7 +2,7 @@
 
 data "helm_repository" "helm" {
   name = "helm"
-  url = "https://helm.github.io/charts"
+  url = "https://kubernetes-charts.storage.googleapis.com"
 }
 
 resource "kubernetes_secret" "do-token" {
