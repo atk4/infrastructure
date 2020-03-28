@@ -38,11 +38,3 @@ module "atk4-kube" {
   }
 }
 
-resource "digitalocean_volume" "db" {
-  name = "db"
-  region = "lon1"
-  size = 100
-  description = "MySQL volume to be attached into k8s cluster"
-}
-
-
