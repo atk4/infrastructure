@@ -92,3 +92,11 @@ resource "kubernetes_cluster_role_binding" "argo-role-binding" {
     name = "me@nearly.guru"
   }
 }
+
+
+resource "digitalocean_record" "argocd" {
+  domain = "agiletoolkit.org"
+  type = "CNAME"
+  name = "argocd"
+  value = "trefik.agiletoolkit.org"
+}
