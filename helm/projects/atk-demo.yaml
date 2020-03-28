@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: test.agiletoolkit.org
+  name: test-agiletoolkit-org
 spec:
   destination:
     namespace: atk-demo
