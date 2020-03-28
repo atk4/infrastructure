@@ -15,6 +15,9 @@ spec:
         dashboard:
           enabled: true
           domain: traefik.agiletoolkit.org
+        kubernetes:
+          ingressEndpoint:
+            hostname: abc
         rbac:
           enabled: true
         ssl:
