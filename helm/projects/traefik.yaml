@@ -7,8 +7,10 @@ spec:
     namespace: kube-system
     server: 'https://kubernetes.default.svc'
   source:
-    path: stable/traefik
-    repoURL: 'https://github.com/helm/charts/'
+    #path: stable/traefik
+    path: traefik
+    repoURL: 'https://github.com/containous/traefik-helm-chart'
+    #repoURL: 'https://github.com/helm/charts/'
     targetRevision: HEAD
     helm:
       values: |
