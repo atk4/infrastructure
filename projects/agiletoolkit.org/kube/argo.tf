@@ -42,8 +42,7 @@ server:
     annotations:
       kubernetes.io/ingress.class: traefik
     hosts: ["argocd.agiletoolkit.org"]
-  extraArgs:
-    insecure: true
+  extraArgs: [ "--insecure" ]
 YAML
   ]
 
