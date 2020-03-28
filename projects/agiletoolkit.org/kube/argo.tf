@@ -25,6 +25,10 @@ resource "helm_release" "argocd" {
     value="true"
   }
   set {
+    name="server.service.type"
+    value="ClusterIP"
+  }
+  set {
     name = "configs.secret.argocdServerAdminPassword"
     value = bcrypt(random_password.argo.result)
   }
