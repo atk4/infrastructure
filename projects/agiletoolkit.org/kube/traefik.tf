@@ -1,7 +1,7 @@
 # Will install traefik here
-resource "kubernetes_namespace" "argo" {
+resource "kubernetes_namespace" "traefik" {
   metadata {
-    name = "argocd"
+    name = "traefik"
   }
 }
 
