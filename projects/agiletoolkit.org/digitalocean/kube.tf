@@ -1,4 +1,7 @@
 data "digitalocean_kubernetes_versions" "example" {}
+data "digitalocean_project" "atk" {
+  name = "atk"
+}
 
 resource "digitalocean_kubernetes_cluster" "atk" {
   name = "atk"
@@ -16,6 +19,13 @@ resource "digitalocean_kubernetes_cluster" "atk" {
     max_nodes = 2
   }
 }
+resource "digitalocean_project_resources" "barfoo" {
+  project = data.digitalocean_project.atk.id
+  resources = [
+    digitalocean_kubernetes_cluster.atk.id
+  ]
+}
+
 
 variable "GITHUB_OAUTH" {}
 variable "TFE_ORG" {}
