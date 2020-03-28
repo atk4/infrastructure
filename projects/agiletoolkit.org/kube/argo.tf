@@ -50,25 +50,25 @@ YAML
   }
 }
 
-data "kubernetes_service" "argocd" {
-  depends_on = [helm_release.argocd]
-  metadata {
-    namespace = "argocd"
-    name = "argo-argocd-server"
-  }
-}
-
-output "ip" {
-  value = data.kubernetes_service.argocd.load_balancer_ingress.0.ip
-}
-
-resource "digitalocean_record" "argocd" {
-  domain = "agiletoolkit.org"
-  type = "A"
-  name = "argocd"
-  ttl = 60
-  value = data.kubernetes_service.argocd.load_balancer_ingress.0.ip
-}
+//data "kubernetes_service" "argocd" {
+//  depends_on = [helm_release.argocd]
+//  metadata {
+//    namespace = "argocd"
+//    name = "argo-argocd-server"
+//  }
+//}
+//
+//output "ip" {
+//  value = data.kubernetes_service.argocd.load_balancer_ingress.0.ip
+//}
+//
+//resource "digitalocean_record" "argocd" {
+//  domain = "agiletoolkit.org"
+//  type = "A"
+//  name = "argocd"
+//  ttl = 60
+//  value = data.kubernetes_service.argocd.load_balancer_ingress.0.ip
+//}
 
 output "argo-password" {
   value = random_password.argo.result
