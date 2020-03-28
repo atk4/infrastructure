@@ -1,9 +1,4 @@
 # Will install traefik here
-resource "kubernetes_namespace" "traefik" {
-  metadata {
-    name = "traefik"
-  }
-}
 
 data "helm_repository" "helm" {
   name = "helm"
@@ -13,7 +8,7 @@ data "helm_repository" "helm" {
 resource "kubernetes_secret" "do-token" {
   metadata {
     name = "acme-dnsprovider-config"
-    namespace = "traefik"
+    namespace = "kube-system"
   }
 
   data = {
@@ -25,7 +20,7 @@ resource "kubernetes_secret" "do-token" {
 resource "helm_release" "traefik" {
   chart = "stable/traefik"
   name = "traefik"
-  namespace = "traefik"
+  namespace = "kube-system"
   repository = data.helm_repository.helm.url
 
 //  set {
@@ -71,7 +66,7 @@ YAML
 data "kubernetes_service" "traefik" {
   depends_on = [helm_release.traefik]
   metadata {
-    namespace = "traefik"
+    namespace = "kube-system"
     name = "traefik"
   }
 }
