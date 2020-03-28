@@ -41,6 +41,24 @@ resource "helm_release" "argocd" {
   }
 }
 
+data "kubernetes_service" "argocd" {
+  metadata {
+    namespace = "argocd"
+    name = "argocd-server"
+  }
+}
+
+output "ip" {
+  value = data.kubernetes_service.argocd.load_balancer_ingress.0.ip
+}
+
+resource "digitalocean_record" "argocd" {
+  domain = "agiletoolkit.org"
+  type = "A"
+  name = "argocd"
+  value = data.kubernetes_service.argocd.load_balancer_ingress.0.ip
+}
+
 output "argo-password" {
   value = random_password.argo.result
 }
