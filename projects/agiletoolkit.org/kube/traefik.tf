@@ -18,7 +18,7 @@ resource "kubernetes_secret" "do-token" {
 }
 
 resource "helm_release" "traefik" {
-  chart = "stable/traefik"
+  chart = "traefik"
   name = "traefik"
   namespace = "kube-system"
   repository = data.helm_repository.helm.url
