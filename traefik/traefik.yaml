@@ -25,7 +25,7 @@ spec:
     k8s-app: traefik-ingress-lb
   ports:
     - port: 8080
-      name: traefik.agiletoolkit.org
+      name: webui
 ---
 apiVersion: v1
 kind: ConfigMap
