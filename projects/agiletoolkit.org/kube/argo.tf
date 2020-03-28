@@ -45,7 +45,7 @@ data "kubernetes_service" "argocd" {
   depends_on = [helm_release.argocd]
   metadata {
     namespace = "argocd"
-    name = "argocd-server"
+    name = "argo-argocd-server"
   }
 }
 
