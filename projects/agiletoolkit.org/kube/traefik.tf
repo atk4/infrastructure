@@ -80,5 +80,5 @@ resource "digitalocean_record" "traefik" {
   type = "A"
   name = "traefik"
   ttl = 60
-  value = data.kubernetes_service.traefik.load_balancer_ingress.0.ip
+  value = "${data.kubernetes_service.traefik.load_balancer_ingress.0.ip}."
 }
