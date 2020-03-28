@@ -57,6 +57,7 @@ resource "digitalocean_record" "argocd" {
   domain = "agiletoolkit.org"
   type = "A"
   name = "argocd"
+  ttl = 60
   value = data.kubernetes_service.argocd.load_balancer_ingress.0.ip
 }
 
