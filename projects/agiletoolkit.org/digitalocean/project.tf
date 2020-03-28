@@ -1,5 +1,5 @@
 resource "digitalocean_project" "atk" {
-  name = "atk4"
+  name = "atk"
   description = "Agile Toolkit Resources"
   purpose = "Web Application"
   environment = "Production"
