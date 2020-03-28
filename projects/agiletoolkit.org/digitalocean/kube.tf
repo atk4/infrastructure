@@ -40,8 +40,8 @@ module "atk4-kube" {
     TF_VAR_KUBE_TOKEN: digitalocean_kubernetes_cluster.atk.kube_config[0].token
     TF_VAR_KUBE_CERT: digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
 
-    TF_VAR_DIGITALOCEAN_TOKEN: digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
     TF_VAR_DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
+    DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
   }
 }
 
