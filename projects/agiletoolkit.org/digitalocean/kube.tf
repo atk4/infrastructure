@@ -19,7 +19,7 @@ resource "digitalocean_kubernetes_cluster" "atk" {
 resource "digitalocean_project_resources" "barfoo" {
   project = digitalocean_project.atk.id
   resources = [
-    digitalocean_kubernetes_cluster.atk.id
+    "do:kubernetes:${digitalocean_kubernetes_cluster.atk.id}"
   ]
 }
 
