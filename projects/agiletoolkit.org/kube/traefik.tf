@@ -7,7 +7,7 @@ resource "kubernetes_namespace" "traefik" {
 
 data "helm_repository" "helm" {
   name = "helm"
-  url = "https://github.com/helm/charts"
+  url = "https://helm.github.io/charts"
 }
 
 resource "kubernetes_secret" "do-token" {
