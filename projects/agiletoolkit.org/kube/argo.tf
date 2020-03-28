@@ -98,5 +98,5 @@ resource "digitalocean_record" "argocd" {
   domain = "agiletoolkit.org"
   type = "CNAME"
   name = "argocd"
-  value = "trefik.agiletoolkit.org"
+  value = "trefik.agiletoolkit.org."
 }

@@ -9,10 +9,15 @@ resource "kubernetes_cluster_role" "codefresh" {
     name = "codefresh-role"
   }
   rule {
+    api_groups = [""]
     resources = ["*"]
     verbs = ["list", "watch", "get"]
   }
 }
+
+// system:serviceaccount:kube-system:codefresh-user"
+// cannot list resource "namespaces" in API group "" at
+// the cluster scope: RBAC: clusterrole.rbac.authorization.k8s.io "codefresh-role" not found
 
 resource "kubernetes_service_account" "codefresh" {
   metadata {
