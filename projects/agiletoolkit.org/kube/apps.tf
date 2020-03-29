@@ -9,7 +9,7 @@ resource "kubernetes_cluster_role" "codefresh" {
     name = "codefresh-role"
   }
   rule {
-    api_groups = [""]
+    api_groups = ["", "extensions"]
     resources = ["*"]
     verbs = ["get", "list", "watch", "create", "update", "patch", "delete"]
   }
