@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ui-agiletoolkit-org
+  name: ui.agiletoolkit.org
 spec:
   destination:
     namespace: apps
@@ -16,6 +16,7 @@ spec:
           value: '1'
 
       values: |
+        fullnameOverride: atk4-demo
         imagePullSecrets:
           - name: cfcr
         ingress:
