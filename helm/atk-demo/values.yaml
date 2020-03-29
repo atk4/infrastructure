@@ -16,7 +16,7 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: r.cfcr.io/romaninsh/atk4/ui
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -52,7 +52,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: traefik
   hosts:
-    - host: www.saasty.io
+    - host: www.example.com
       paths: ['/']
 
 resources: {}
