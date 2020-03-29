@@ -25,6 +25,8 @@ spec:
           hosts:
             - host: ui.agiletoolkit.org
               paths: ["/"]
+            - host: ui2.agiletoolkit.org
+              paths: ["/"]
   project: default
   syncPolicy:
     automated:
