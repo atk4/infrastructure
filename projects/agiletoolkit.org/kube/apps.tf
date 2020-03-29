@@ -11,7 +11,7 @@ resource "kubernetes_cluster_role" "codefresh" {
   rule {
     api_groups = [""]
     resources = ["*"]
-    verbs = ["list", "watch", "get"]
+    verbs = ["get", "list", "watch", "create", "update", "patch", "delete"]
   }
 }
 
