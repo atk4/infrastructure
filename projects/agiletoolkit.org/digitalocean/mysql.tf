@@ -4,6 +4,7 @@ resource "digitalocean_database_cluster" "db" {
   node_count = 1
   region = "lon1"
   size = "50"
+  version = "8"
 }
 resource "digitalocean_project_resources" "db_atk" {
   project = digitalocean_project.atk.id
