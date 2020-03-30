@@ -165,3 +165,11 @@ module "atk4-money-lending-tutorial" {
   access = local.addon
 }
 
+module "atk4-outbox" {
+  source = "./addon"
+  name = "outbox"
+  description = "Integrate ATK UI with transactional mail gateways"
+  topics = ["outbox"]
+
+  access = local.addon
+}
