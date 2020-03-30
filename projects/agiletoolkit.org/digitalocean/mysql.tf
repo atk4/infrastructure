@@ -3,7 +3,7 @@ resource "digitalocean_database_cluster" "db" {
   name = "atk"
   node_count = 1
   region = "lon1"
-  size = "50"
+  size = "db-s-1vcpu-1gb"
   version = "8"
 }
 resource "digitalocean_project_resources" "db_atk" {
