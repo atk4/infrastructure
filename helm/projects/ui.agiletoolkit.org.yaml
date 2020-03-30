@@ -16,6 +16,7 @@ spec:
           value: '1'
 
       values: |
+        version: develop
         fullnameOverride: atk4-demo
         imagePullSecrets:
           - name: cfcr
