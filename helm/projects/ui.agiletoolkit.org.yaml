@@ -4,7 +4,7 @@ metadata:
   name: ui.agiletoolkit.org
 spec:
   destination:
-    namespace: apps
+    namespace: atk-demo
     server: 'https://kubernetes.default.svc'
   source:
     path: helm/atk-demo
@@ -20,6 +20,9 @@ spec:
         fullnameOverride: atk4-demo
         imagePullSecrets:
           - name: cfcr
+        env:
+          - name: foo
+            value: bar
         ingress:
           enabled: true
           annotations:
