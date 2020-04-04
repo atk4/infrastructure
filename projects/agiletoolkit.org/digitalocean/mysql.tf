@@ -22,14 +22,16 @@ module "atk4-db" {
   env = {
     TF_VAR_MYSQL_ENDPOINT: digitalocean_database_cluster.db.uri # try private_uri
 
+    # Connects to MySQL and create databases
     MYSQL_ENDPOINT: "${digitalocean_database_cluster.db.uri}:${digitalocean_database_cluster.db.port}" # try private_uri
     MYSQL_USERNAME: digitalocean_database_cluster.db.user
     MYSQL_PASSWORD: digitalocean_database_cluster.db.password
     MYSQL_TLS_CONFIG: "true"
 
-
-    #TF_VAR_DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
-    #DIGITALOCEAN_TOKEN: var.DIGITALOCEAN_TOKEN
+    # Publishes DNS strings in kubernetes secrets
+    TF_VAR_KUBE_HOST: digitalocean_kubernetes_cluster.atk.endpoint
+    TF_VAR_KUBE_TOKEN: digitalocean_kubernetes_cluster.atk.kube_config[0].token
+    TF_VAR_KUBE_CERT: digitalocean_kubernetes_cluster.atk.kube_config[0].cluster_ca_certificate
   }
 }
 
