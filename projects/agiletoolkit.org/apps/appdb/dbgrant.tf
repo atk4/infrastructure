@@ -29,6 +29,11 @@ output "up" {
   value = "${var.name}:${random_password.atk-demo.result}"
 }
 
+resource "kubernetes_namespace" "apps" {
+  metadata {
+    name = var.name
+  }
+}
 
 resource "kubernetes_secret" "this_tls" {
 
@@ -46,8 +51,6 @@ resource "kubernetes_secret" "this_tls" {
   }
 
   data = {
-    "dsn" = "mysql://${var.name}:${random_password.atk-demo.result}@${var.host}"
-    "tls.crt" = var.tiller_tls.cert_pem
-    "ca.crt"  = var.tiller_tls.ca_cert_pem
+    "dsn" = "mysql://${var.name}:${random_password.atk-demo.result}@${var.host}/${var.name}"
   }
 }
