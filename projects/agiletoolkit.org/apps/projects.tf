@@ -7,7 +7,7 @@ variable "MYSQL_ENDPOINT" {}
 
 # Regular full-access mysql grant
 module "atk-demo" {
-  source = "./appdb"
+  source = "./basic-app"
 
   host = var.MYSQL_ENDPOINT
   name = "atk-demo"

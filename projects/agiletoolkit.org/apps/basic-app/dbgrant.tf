@@ -11,11 +11,26 @@ resource "mysql_database" "atk-demo" {
 resource "random_password" "atk-demo" {
   length = 10
 }
+resource "random_password" "atk-demo-ro" {
+  length = 10
+}
 
 resource "mysql_user" "atk-demo" {
   user = var.name
   host = "%"
   plaintext_password = random_password.atk-demo.result
+}
+resource "mysql_user" "atk-demo-ro" {
+  user = var.name
+  host = "%"
+  plaintext_password = random_password.atk-demo.result
+}
+
+resource "mysql_grant" "atk-demo-ro" {
+  user = mysql_user.atk-demo-ro.user
+  host = mysql_user.atk-demo.host
+  database = mysql_database.atk-demo.name
+  privileges = ["SELECT"]
 }
 
 resource "mysql_grant" "atk-demo" {
@@ -43,6 +58,7 @@ resource "kubernetes_secret" "app-dns" {
   }
 
   data = {
-    "dsn" = "mysql://${var.name}:${random_password.atk-demo.result}@${var.host}/${var.name}"
+    "admin_dsn" = "mysql://${var.name}:${random_password.atk-demo.result}@${var.host}/${var.name}"
+    "ro_dsn" = "mysql://${var.name}:${random_password.atk-demo.result}@${var.host}/${var.name}"
   }
 }
