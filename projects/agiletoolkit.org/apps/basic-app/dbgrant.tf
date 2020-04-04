@@ -15,6 +15,11 @@ resource "mysql_database" "atk-demo" {
 resource "random_password" "atk-demo" {
   for_each = var.permissions
 
+  upper   = true
+  lower   = true
+  number  = true
+  special = false
+
   length = 10
 }
 
