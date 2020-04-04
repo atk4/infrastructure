@@ -20,10 +20,10 @@ module "atk4-db" {
   tfe_org = var.TFE_ORG
 
   env = {
-    TF_VAR_MYSQL_ENDPOINT: digitalocean_database_cluster.db.uri # try private_uri
+    TF_VAR_MYSQL_ENDPOINT: "${digitalocean_database_cluster.db.host}:${digitalocean_database_cluster.db.port}" # try private_uri
 
     # Connects to MySQL and create databases
-    MYSQL_ENDPOINT: "${digitalocean_database_cluster.db.uri}:${digitalocean_database_cluster.db.port}" # try private_uri
+    MYSQL_ENDPOINT: "${digitalocean_database_cluster.db.host}:${digitalocean_database_cluster.db.port}" # try private_uri
     MYSQL_USERNAME: digitalocean_database_cluster.db.user
     MYSQL_PASSWORD: digitalocean_database_cluster.db.password
     MYSQL_TLS_CONFIG: "true"
