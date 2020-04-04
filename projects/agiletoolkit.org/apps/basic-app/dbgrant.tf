@@ -4,38 +4,34 @@ variable "name" {}
 
 variable "host" {}
 
+variable "permissions" {
+  type = map(string)
+}
+
 resource "mysql_database" "atk-demo" {
   name = "ui.agiletoolkit.org"
 }
 
 resource "random_password" "atk-demo" {
-  length = 10
-}
-resource "random_password" "atk-demo-ro" {
+  for_each = var.permissions
+
   length = 10
 }
 
 resource "mysql_user" "atk-demo" {
-  user = var.name
-  plaintext_password = random_password.atk-demo.result
-}
-resource "mysql_user" "atk-demo-ro" {
-  user = var.name
-  plaintext_password = random_password.atk-demo.result
-}
+  for_each = var.permissions
 
-resource "mysql_grant" "atk-demo-ro" {
-  user = mysql_user.atk-demo-ro.user
-  host = mysql_user.atk-demo.host
-  database = mysql_database.atk-demo.name
-  privileges = ["SELECT"]
+  user = "${var.name}-${each.key}"
+  plaintext_password = random_password.atk-demo[each.key].result
 }
 
 resource "mysql_grant" "atk-demo" {
-  user = mysql_user.atk-demo.user
+  for_each = var.permissions
+
+  user = mysql_user.atk-demo[each.key].user
   host = mysql_user.atk-demo.host
   database = mysql_database.atk-demo.name
-  privileges = ["all privileges"]
+  privileges = [each.value]
 }
 
 output "up" {
@@ -56,7 +52,8 @@ resource "kubernetes_secret" "app-dns" {
   }
 
   data = {
-    "admin_dsn" = "mysql://${var.name}:${random_password.atk-demo.result}@${var.host}/${var.name}"
-    "ro_dsn" = "mysql://${var.name}:${random_password.atk-demo.result}@${var.host}/${var.name}"
+    for p in var.permissions:
+
+    "${p}_dsn" => "mysql://${var.name}-${p}:${random_password.atk-demo.result}@${var.host}/${var.name}"
   }
 }
