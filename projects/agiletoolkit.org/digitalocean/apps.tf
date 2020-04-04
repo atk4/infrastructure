@@ -26,8 +26,7 @@ module "atk4-apps" {
     MYSQL_ENDPOINT: "${digitalocean_database_cluster.db.host}:${digitalocean_database_cluster.db.port}" # try private_uri
     MYSQL_USERNAME: digitalocean_database_cluster.db.user
     MYSQL_PASSWORD: digitalocean_database_cluster.db.password
-    MYSQL_TLS_CONFIG: "true"
-    MYSQL_TLS_CONFIG2: "true"
+    MYSQL_TLS_CONFIG: "skip-verify"
 
     # Publishes DNS strings in kubernetes secrets
     TF_VAR_KUBE_HOST: digitalocean_kubernetes_cluster.atk.endpoint
