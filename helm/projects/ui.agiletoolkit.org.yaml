@@ -21,8 +21,12 @@ spec:
         imagePullSecrets:
           - name: cfcr
         env:
-          - name: foo
-            value: bar
+          - name: DSN
+            valueFrom:
+              secretKeyRef:
+                name: db-connection
+                key: ro_dsn
+
         ingress:
           enabled: true
           annotations:
