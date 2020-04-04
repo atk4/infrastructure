@@ -37,7 +37,7 @@ module "atk4-apps" {
 
 
 output "db_database" {
-  value = digitalocean_database_cluster.db.database
+  value = "${digitalocean_database_cluster.db.host}:${digitalocean_database_cluster.db.port}"
 }
 output "db_user" {
   value = digitalocean_database_cluster.db.user
