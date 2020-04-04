@@ -48,7 +48,7 @@ resource "kubernetes_secret" "app-dns" {
   }
 
   data = {
-    for p in var.permissions:
+    for p in keys(var.permissions):
 
     "${p}_dsn" => "mysql://${var.name}-${p}:${random_password.atk-demo[p].result}@${var.host}/${var.name}"
   }
