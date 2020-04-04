@@ -26,6 +26,7 @@ resource "random_password" "atk-demo" {
 resource "mysql_user" "atk-demo" {
   for_each = var.permissions
 
+  host = "%"
   user = "${var.name}-${each.key}"
   plaintext_password = random_password.atk-demo[each.key].result
 }
