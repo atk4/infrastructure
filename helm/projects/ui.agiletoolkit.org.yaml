@@ -22,7 +22,7 @@ spec:
 
       values: |
         version: develop
-        fullnameOverride: atk4-demo
+        fullnameOverride: atk-demo
         imagePullSecrets:
           - name: cfcr
         env:
