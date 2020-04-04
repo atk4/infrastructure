@@ -15,7 +15,7 @@ resource "digitalocean_project_resources" "db_atk" {
 module "atk4-apps" {
   source = "../../../root/workspace"
   name = "atk4-apps"
-  path = "projects/agiletoolkit.org/db"
+  path = "projects/agiletoolkit.org/apps"
   github_oauth = var.GITHUB_OAUTH
   tfe_org = var.TFE_ORG
 

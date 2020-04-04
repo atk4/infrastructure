@@ -35,19 +35,11 @@ resource "kubernetes_namespace" "apps" {
   }
 }
 
-resource "kubernetes_secret" "this_tls" {
+resource "kubernetes_secret" "app-dns" {
 
   metadata {
     name      = "db-connection"
     namespace = var.name
-
-    /*
-    labels = {
-      "app.kubernetes.io/name"       = "helm"
-      "app.kubernetes.io/component"  = "tiller"
-      "app.kubernetes.io/managed-by" = "terraform"
-    }
-    */
   }
 
   data = {
