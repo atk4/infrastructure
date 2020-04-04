@@ -29,13 +29,9 @@ resource "mysql_grant" "atk-demo" {
   for_each = var.permissions
 
   user = mysql_user.atk-demo[each.key].user
-  host = mysql_user.atk-demo.host
+  host = mysql_user.atk-demo[each.key].host
   database = mysql_database.atk-demo.name
   privileges = [each.value]
-}
-
-output "up" {
-  value = "${var.name}:${random_password.atk-demo.result}"
 }
 
 resource "kubernetes_namespace" "apps" {
@@ -54,6 +50,6 @@ resource "kubernetes_secret" "app-dns" {
   data = {
     for p in var.permissions:
 
-    "${p}_dsn" => "mysql://${var.name}-${p}:${random_password.atk-demo.result}@${var.host}/${var.name}"
+    "${p}_dsn" => "mysql://${var.name}-${p}:${random_password.atk-demo[p].result}@${var.host}/${var.name}"
   }
 }

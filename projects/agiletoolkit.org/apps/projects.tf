@@ -17,8 +17,3 @@ module "atk-demo" {
     "ro": "select"
   }
 }
-
-output "atk-demo" {
-  value = "mysql://${module.atk-demo.up}@${var.MYSQL_ENDPOINT}:/atk-demo"
-}
-
