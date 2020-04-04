@@ -9,7 +9,7 @@ variable "permissions" {
 }
 
 resource "mysql_database" "atk-demo" {
-  name = "ui.agiletoolkit.org"
+  name = var.name
 }
 
 resource "random_password" "atk-demo" {
