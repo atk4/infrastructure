@@ -11,6 +11,13 @@ module "atk-demo" {
 
   host = var.MYSQL_ENDPOINT
   name = "atk-demo"
+
+  /*
+  permissions = {
+    "admin": "all privileges"
+    "ro": "select"
+  }
+  */
 }
 
 output "atk-demo" {

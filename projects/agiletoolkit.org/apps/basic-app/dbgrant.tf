@@ -17,12 +17,10 @@ resource "random_password" "atk-demo-ro" {
 
 resource "mysql_user" "atk-demo" {
   user = var.name
-  host = "%"
   plaintext_password = random_password.atk-demo.result
 }
 resource "mysql_user" "atk-demo-ro" {
   user = var.name
-  host = "%"
   plaintext_password = random_password.atk-demo.result
 }
 
