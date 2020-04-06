@@ -30,3 +30,9 @@ module "saasty-preview" {
     "ro": "select"
   }
 }
+
+module "saasty-landing" {
+  source = "./static-app"
+
+  name = "saasty-landing"
+}
