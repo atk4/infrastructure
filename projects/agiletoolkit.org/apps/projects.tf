@@ -17,3 +17,16 @@ module "atk-demo" {
     "ro": "select"
   }
 }
+
+# Saasty preview app context
+module "saasty-preview" {
+  source = "./basic-app"
+
+  host = var.MYSQL_ENDPOINT
+  name = "saasty-preview"
+
+  permissions = {
+    "admin": "all privileges"
+    "ro": "select"
+  }
+}
