@@ -25,6 +25,7 @@ spec:
         fullnameOverride: saasty-landing
         imagePullSecrets:
           - name: cfcr
+        env: []
 
         ingress:
           enabled: true
