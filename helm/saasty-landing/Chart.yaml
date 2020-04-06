@@ -1,0 +1,6 @@
+apiVersion: v1
+name: atk-demo
+description: Agile Toolkit Demo App Chart
+type: application
+version: 0.1.0
+appVersion: latest
