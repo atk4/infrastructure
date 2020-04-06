@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: www.saasty.io
+spec:
+  destination:
+    namespace: saasty-landing
+    server: 'https://kubernetes.default.svc'
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/template/spec/containers/0/image
+  source:
+    path: helm/saasty-landing
+    repoURL: 'https://github.com/atk4/infrastructure/'
+    targetRevision: HEAD
+    helm:
+      parameters:
+        - name: replicaCount
+          value: '1'
+
+      values: |
+        version: develop
+        fullnameOverride: saasty-landing
+        imagePullSecrets:
+          - name: cfcr
+
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: traefik
+          hosts:
+            - host: www.saasty.io
+              paths: ["/"]
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
