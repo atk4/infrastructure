@@ -19,7 +19,7 @@ version: latest
 
 image:
   repository: r.cfcr.io/romaninsh/atk4/ui
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 imagePullSecrets: []
 nameOverride: ""
