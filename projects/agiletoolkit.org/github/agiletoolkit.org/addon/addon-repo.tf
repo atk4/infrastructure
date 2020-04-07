@@ -78,7 +78,7 @@ resource "github_repository_collaborator" "maintainer" {
   for_each   = toset(var.access.maintainers)
   repository = github_repository.addon.name
   username   = each.value
-  permission = "admin"
+  permission = "maintain"
 }
 
 resource "github_repository_collaborator" "contributor" {
