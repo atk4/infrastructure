@@ -1,13 +1,14 @@
+# We need 2 services here
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "atk-demo.fullname" . }}
+  name: {{ include "atk-demo.fullname" . }}-frontend
   labels:
     {{- include "atk-demo.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  type: NodePort
   ports:
-    - port: {{ .Values.service.port }}
+    - port: 80
       targetPort: http
       protocol: TCP
       name: http

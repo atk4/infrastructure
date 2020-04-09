@@ -1,31 +1,24 @@
-{{- if .Values.ingress.enabled -}}
 {{- $fullName := include "atk-demo.fullname" . -}}
-{{- $svcPort := .Values.service.port -}}
 {{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
 {{- else -}}
 apiVersion: extensions/v1beta1
 {{- end }}
+
+
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  name: {{ $fullName }}-frontend
   labels:
     {{- include "atk-demo.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
   annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
+    kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  {{- range .Values.ingress.hosts }}
-    - host: {{ .host | quote }}
+    - host: frontend.{{ .Values.host | quote }}
       http:
         paths:
-        {{- range .paths }}
-          - path: {{ . }}
+          - path: /frontend/
             backend:
-              serviceName: {{ $fullName }}
-              servicePort: {{ $svcPort }}
-        {{- end }}
-  {{- end }}
-{{- end }}
+              serviceName: {{ $fullName }}-frontend
+              servicePort: 80
