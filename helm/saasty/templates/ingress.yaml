@@ -15,7 +15,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-    - host: frontend.{{ .Values.host | quote }}
+    - host: frontend.{{ .Values.host }}
       http:
         paths:
           - path: /frontend/
