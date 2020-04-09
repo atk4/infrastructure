@@ -33,14 +33,6 @@ spec:
                 key: admin_dsn
         host: preview.saasty.io
 
-
-        ingress:
-          enabled: true
-          annotations:
-            kubernetes.io/ingress.class: traefik
-          hosts:
-            - host: preview.saasty.io
-              paths: ["/"]
   project: default
   syncPolicy:
     automated:
