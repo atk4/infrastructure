@@ -25,6 +25,13 @@ spec:
         fullnameOverride: saasty-preview
         imagePullSecrets:
           - name: cfcr
+        env:
+          - name: DSN
+            valueFrom:
+              secretKeyRef:
+                name: db-connection
+                key: admin_dsn
+
         env: []
 
         host: preview.saasty.io
