@@ -18,7 +18,7 @@ spec:
     - host: frontend.{{ .Values.host }}
       http:
         paths:
-          - path: /frontend/
+          - path: /
             backend:
               serviceName: {{ $fullName }}-frontend
               servicePort: 80
