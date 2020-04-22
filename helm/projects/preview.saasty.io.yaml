@@ -31,6 +31,16 @@ spec:
               secretKeyRef:
                 name: db-connection
                 key: admin_dsn
+          - name: RAVEN_KEY
+            valueFrom:
+              secretKeyRef:
+                name: saasty-config
+                key: raven_key
+          - name: SENDGRID_KEY
+            valueFrom:
+              secretKeyRef:
+                name: saasty-config
+                key: sendgrid_key
         host: preview.saasty.io
 
   project: default
