@@ -19,9 +19,12 @@ spec:
       containers:
         - name: admin
           securityContext:
-          {{- toYaml .Values.securityContext | nindent 12 }}
+            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}/admin:{{ .Values.version }}"
           imagePullPolicy: IfNotPresent
+          env:
+            {{- toYaml .Values.env | nindent 12 }}
+
       restartPolicy: Always
   selector:
     matchLabels:
