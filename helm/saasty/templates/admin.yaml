@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin
+  labels:
+    app: admin
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: admin
+      labels:
+        app: admin
+    spec:
+      containers:
+        - name: admin
+          image: "{{ .Values.image.repository }}/admin:{{ .Values.version }}"
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: admin
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin
+spec:
+  selector:
+    app: admin
+  ports:
+    - port: 80
+  type: NodePort
+

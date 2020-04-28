@@ -18,7 +18,7 @@ replicaCount: 1
 version: latest
 
 image:
-  repository: r.cfcr.io/romaninsh/saasty/frontend
+  repository: r.cfcr.io/romaninsh/saasty
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
