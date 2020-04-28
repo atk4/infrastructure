@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 name: saasty-preview
 description: Agile Toolkit Demo App Chart
 type: application

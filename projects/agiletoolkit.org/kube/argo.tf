@@ -15,6 +15,7 @@ data "helm_repository" "argocd" {
 
 resource "helm_release" "argocd" {
   chart = "argo-cd"
+  version = "1.5.2"
   name = "argo"
   namespace = "argocd"
   repository = data.helm_repository.argocd.url
