@@ -22,3 +22,10 @@ spec:
             backend:
               serviceName: {{ $fullName }}-frontend
               servicePort: 80
+    - host: admin-123.{{ .Values.host }}
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: admin
+              servicePort: 80
