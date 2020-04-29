@@ -22,6 +22,10 @@ spec:
       serviceAccountName: {{ include "atk-demo.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: saasty-apps
+          persistentVolumeClaim:
+            claimName: saasty-apps-claim
       containers:
         - name: frontend
           securityContext:
@@ -48,10 +52,6 @@ spec:
           env:
             {{- toYaml .Values.env | nindent 12 }}
       {{- with .Values.nodeSelector }}
-      volumes:
-        - name: saasty-apps
-          persistentVolumeClaim:
-            claimName: saasty-apps-claim
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
