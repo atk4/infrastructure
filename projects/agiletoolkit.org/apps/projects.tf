@@ -31,6 +31,16 @@ module "saasty-preview" {
   }
 }
 
+#explicitly allow saasty preview admin to access saasty_* databases
+resource "mysql_grant" "atk-demo" {
+  user = "saasty-preview-admin"
+  host = "%"
+  database = "saasty_%"
+  privileges = "all privileges"
+  grant = true
+}
+
+
 module "saasty-landing" {
   source = "./static-app"
 

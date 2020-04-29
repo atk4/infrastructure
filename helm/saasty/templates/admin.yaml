@@ -6,6 +6,7 @@ metadata:
     app: admin
 spec:
   replicas: 1
+  revisionHistoryLimit: 2
   template:
     metadata:
       name: admin

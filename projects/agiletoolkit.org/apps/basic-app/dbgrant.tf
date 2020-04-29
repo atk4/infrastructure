@@ -59,3 +59,4 @@ resource "kubernetes_secret" "app-dns" {
     "${p}_dsn" => "mysql://${var.name}-${p}:${random_password.atk-demo[p].result}@${var.host}/${var.name}"
   }
 }
+
