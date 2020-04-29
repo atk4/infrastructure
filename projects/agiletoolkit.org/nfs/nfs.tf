@@ -30,7 +30,7 @@ resource "helm_release" "nfs-server" {
   }
   set {
     name = "storageClass.create"
-    value = "false"
+    value = "true"
   }
   set {
     name = "storageClass.provisionerName"
@@ -41,3 +41,5 @@ resource "helm_release" "nfs-server" {
     value = "Retain"
   }
 }
+
+
