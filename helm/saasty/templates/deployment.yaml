@@ -40,11 +40,18 @@ spec:
             httpGet:
               path: /
               port: http
+          volumeMounts:
+            - mountPath: /app/apps
+              name: saasty-apps
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             {{- toYaml .Values.env | nindent 12 }}
       {{- with .Values.nodeSelector }}
+      volumes:
+        - name: saasty-apps
+          persistentVolumeClaim:
+            claimName: saasty-apps-claim
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
