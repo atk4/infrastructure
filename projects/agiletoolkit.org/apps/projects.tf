@@ -25,6 +25,9 @@ module "saasty-preview" {
   source = "./static-app"
   name = "saasty-preview"
 }
+resource "mysql_database" "atk-demo" {
+  name = "saasty-preview"
+}
 resource "kubernetes_secret" "app-extra-dsn" {
   metadata {
     name      = "admin-connection"
