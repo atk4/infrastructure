@@ -27,6 +27,9 @@ module "saasty-preview" {
 }
 resource "mysql_database" "atk-demo" {
   name = "saasty-preview"
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 resource "kubernetes_secret" "app-extra-dsn" {
   metadata {
