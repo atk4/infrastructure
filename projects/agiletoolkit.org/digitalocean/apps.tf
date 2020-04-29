@@ -28,6 +28,10 @@ module "atk4-apps" {
     MYSQL_PASSWORD: digitalocean_database_cluster.db.password
     MYSQL_TLS_CONFIG: "skip-verify"
 
+    TF_VAR_MYSQL_USERNAME: digitalocean_database_cluster.db.user
+    TF_VAR_MYSQL_PASSWORD: digitalocean_database_cluster.db.password
+
+
     # Publishes DNS strings in kubernetes secrets
     TF_VAR_KUBE_HOST: digitalocean_kubernetes_cluster.atk.endpoint
     TF_VAR_KUBE_TOKEN: digitalocean_kubernetes_cluster.atk.kube_config[0].token
