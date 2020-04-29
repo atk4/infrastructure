@@ -29,7 +29,7 @@ spec:
           - name: DSN
             valueFrom:
               secretKeyRef:
-                name: db-connection
+                name: admin-connection
                 key: admin_dsn
           - name: RAVEN_KEY
             valueFrom:
