@@ -36,7 +36,7 @@ resource "mysql_grant" "atk-demo" {
   user = "saasty-preview-admin"
   host = "%"
   database = "saasty_%"
-  privileges = "all privileges"
+  privileges = ["all privileges"]
   grant = true
 }
 
