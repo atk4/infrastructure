@@ -13,10 +13,10 @@ locals {
     "acicovic",
     "PhilippGrashoff",
     "skondakov",
-    "mvorisek",
     "georgehristov",
   ]
   github_contributors = [
+    "mvorisek",
     "gowrav-vishwakarma",
     "jancha",
   ]
