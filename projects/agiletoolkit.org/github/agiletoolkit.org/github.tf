@@ -6,6 +6,7 @@ locals {
   github_owners = [
     "ibelar",
     "DarkSide666",
+    "mvorisek",
   ]
 
   github_maintainers = [
@@ -13,7 +14,6 @@ locals {
     "acicovic",
     "PhilippGrashoff",
     "skondakov",
-    "mvorisek",
     "georgehristov",
   ]
   github_contributors = [
