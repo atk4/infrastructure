@@ -51,7 +51,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: APP_DOMAIN
-              value: {{- .Values.appDomain }}
+              value: {{ .Values.appDomain }}
             {{- toYaml .Values.env | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
