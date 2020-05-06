@@ -15,7 +15,7 @@
 
 replicaCount: 1
 
-version: latest
+version: develop
 
 image:
   repository: r.cfcr.io/romaninsh/saasty
@@ -26,6 +26,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 appSpace: 20Gi
+appDomain: saasty.net
 
 serviceAccount:
   # Specifies whether a service account should be created
