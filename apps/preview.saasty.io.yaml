@@ -21,7 +21,6 @@ spec:
           value: '1'
 
       values: |
-        version: latest
         fullnameOverride: saasty-preview
         imagePullSecrets:
           - name: cfcr
