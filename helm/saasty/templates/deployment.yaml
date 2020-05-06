@@ -45,7 +45,7 @@ spec:
               path: /
               port: http
           volumeMounts:
-            - mountPath: /var/www/html/frontend/apps
+            - mountPath: /var/www/html/apps
               name: saasty-apps
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
