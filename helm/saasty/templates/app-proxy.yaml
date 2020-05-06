@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-proxy
+  labels:
+    app: app-proxy
+spec:
+  selector:
+    matchLabels:
+      app: app-proxy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app-proxy
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: saasty-app-proxy
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}/app-proxy:{{ .Values.version }}"
+{{/*          resources:*/}}
+{{/*            requests:*/}}
+{{/*              cpu: 10m*/}}
+{{/*              memory: 100Mi*/}}
+          env:
+            {{- toYaml .Values.env | nindent 12 }}
+          volumeMounts:
+            - name: saasty-apps
+              mountPath: /apps
+      volumes:
+        - name: saasty-apps
+          persistentVolumeClaim:
+            claimName: saasty-apps-claim
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-proxy
+spec:
+  selector:
+    app: app-proxy
+  ports:
+    - port: 80
+  type: NodePort
+
+---
+apiVersion: "networking.k8s.io/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "app-proxy"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: "*.saasty.app"
+      http:
+        paths:
+          - path: "/"
+            backend:
+              serviceName: "app-proxy"
+              servicePort: 80
+

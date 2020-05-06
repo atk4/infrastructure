@@ -29,3 +29,12 @@ spec:
             backend:
               serviceName: admin
               servicePort: 80
+
+    - host: {{ .Values.app-host }}
+      alias: aoeu
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: app-proxy
+              servicePort: 80
