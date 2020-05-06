@@ -49,6 +49,8 @@ acme:
   challengeType: "dns-01"
   domains:
     enabled: true
+    domainsList:
+      - main: *.saasty.net
   dnsProvider:
     name: digitalocean
     existingSecretName: acme-dnsprovider-config
