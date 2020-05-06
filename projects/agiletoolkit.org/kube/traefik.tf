@@ -50,7 +50,7 @@ acme:
   domains:
     enabled: true
     domainsList:
-      - main: *.saasty.net
+      - main: "*.saasty.net"
   dnsProvider:
     name: digitalocean
     existingSecretName: acme-dnsprovider-config
