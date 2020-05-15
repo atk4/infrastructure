@@ -19,7 +19,12 @@ locals {
     "PHP8.0+" : { c: "ff0000", d: "Requires PHP 8.0 and higher" },
     "question" : { c: "cc317c", d: "" },
     "BC-break" : { c: "550000", d: "" },
-    "help wanted" : { c: "128a0c", d: "" }
+    "help wanted" : { c: "128a0c", d: "" },
+    "has PR" : { c: "a3f7d0", d: "" },
+    "sponsored :moneybag:" : { c: "f8d74a", d: "" },
+    "MAJOR" : { c: "b60205", d: "" },
+    "wontfix" : { c: "e0e0e0", d: "" },
+    "waiting for author" : { c: "162d93", d: "" }
   }
 }
 
