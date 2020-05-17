@@ -18,7 +18,7 @@ locals {
     "PHP7.4+" : { c: "ff0000", d: "Requires PHP 7.4 or higher" },
     "PHP8.0+" : { c: "ff0000", d: "Requires PHP 8.0 or higher" },
     "question" : { c: "cc317c", d: "" },
-    "BC-break" : { c: "550000", d: "" },
+    "BC-break" : { c: "b60205", d: "" },
     "help wanted" : { c: "128a0c", d: "" },
     "has PR" : { c: "a3f7d0", d: "" },
     "sponsored :moneybag:" : { c: "f8d74a", d: "" },
