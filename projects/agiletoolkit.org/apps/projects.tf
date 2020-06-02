@@ -20,6 +20,19 @@ module "atk-demo" {
   }
 }
 
+# Regular full-access mysql grant
+module "atk-demo-develop" {
+  source = "./basic-app"
+
+  host = var.MYSQL_ENDPOINT
+  name = "atk-demo-develop"
+
+  permissions = {
+    "admin": "all privileges"
+    "ro": "select"
+  }
+}
+
 # Saasty preview app context
 module "saasty-preview" {
   source = "./static-app"
