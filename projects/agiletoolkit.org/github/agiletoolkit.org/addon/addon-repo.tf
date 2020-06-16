@@ -85,7 +85,7 @@ resource "github_repository_collaborator" "maintainer" {
   username   = each.value
   permission = "maintain"
   lifecycle {
-    ignore_changes = true[permission]
+    ignore_changes = [permission]
   }
 }
 
@@ -95,7 +95,7 @@ resource "github_repository_collaborator" "contributor" {
   username   = each.value
   permission = "push"
   lifecycle {
-    ignore_changes = true[permission]
+    ignore_changes = [permission]
   }
 }
 
