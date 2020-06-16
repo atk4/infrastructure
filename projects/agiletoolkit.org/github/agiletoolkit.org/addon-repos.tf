@@ -62,8 +62,6 @@ module "atk4-invoice" {
   description = "UI for entering and displaying invoices"
   topics = ["invoice"]
 
-  protect_master = false
-
   access = local.addon
 }
 
