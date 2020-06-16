@@ -14,7 +14,17 @@ variable "access" {
 
 locals {
   labels = {
-    "PHP7.3+" : { c: "FF0000", d: "This can only run on PHP 7.3 and higher" }
+    "PHP7.3+" : { c: "ff0000", d: "Requires PHP 7.3 or higher" },
+    "PHP7.4+" : { c: "ff0000", d: "Requires PHP 7.4 or higher" },
+    "PHP8.0+" : { c: "ff0000", d: "Requires PHP 8.0 or higher" },
+    "question" : { c: "cc317c", d: "" },
+    "BC-break" : { c: "b60205", d: "" },
+    "help wanted" : { c: "128a0c", d: "" },
+    "has PR" : { c: "a3f7d0", d: "" },
+    "sponsored :moneybag:" : { c: "f8d74a", d: "" },
+    "MAJOR" : { c: "b60205", d: "" },
+    "wontfix" : { c: "e0e0e0", d: "" },
+    "waiting for author" : { c: "162d93", d: "" }
   }
 }
 
