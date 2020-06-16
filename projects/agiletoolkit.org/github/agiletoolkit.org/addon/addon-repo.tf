@@ -84,6 +84,9 @@ resource "github_repository_collaborator" "maintainer" {
   repository = github_repository.addon.name
   username   = each.value
   permission = "maintain"
+  lifecycle {
+    ignore_changes = true[permission]
+  }
 }
 
 resource "github_repository_collaborator" "contributor" {
@@ -91,6 +94,9 @@ resource "github_repository_collaborator" "contributor" {
   repository = github_repository.addon.name
   username   = each.value
   permission = "push"
+  lifecycle {
+    ignore_changes = true[permission]
+  }
 }
 
 
