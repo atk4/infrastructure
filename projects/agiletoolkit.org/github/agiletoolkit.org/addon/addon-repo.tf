@@ -43,11 +43,6 @@ variable "protect_develop" {
   default = true
 }
 
-variable "protect_master" {
-  type    = bool
-  default = true
-}
-
 resource "github_repository" "addon" {
   name        = var.name
   description = var.description
