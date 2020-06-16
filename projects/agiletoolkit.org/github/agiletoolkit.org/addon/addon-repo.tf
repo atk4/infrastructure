@@ -43,11 +43,6 @@ variable "protect_develop" {
   default = true
 }
 
-variable "protect_master" {
-  type    = bool
-  default = true
-}
-
 resource "github_repository" "addon" {
   name        = var.name
   description = var.description
@@ -109,11 +104,4 @@ resource "github_branch_protection" "addon-develop" {
   required_pull_request_reviews {
     required_approving_review_count = 1
   }
-}
-
-resource "github_branch_protection" "addon-master" {
-  count = var.protect_master ? 1 : 0
-
-  branch     = "master"
-  repository = github_repository.addon.name
 }
