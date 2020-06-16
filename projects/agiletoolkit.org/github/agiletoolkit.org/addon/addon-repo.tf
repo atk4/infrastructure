@@ -105,10 +105,3 @@ resource "github_branch_protection" "addon-develop" {
     required_approving_review_count = 1
   }
 }
-
-resource "github_branch_protection" "addon-master" {
-  count = var.protect_master ? 1 : 0
-
-  branch     = "master"
-  repository = github_repository.addon.name
-}
