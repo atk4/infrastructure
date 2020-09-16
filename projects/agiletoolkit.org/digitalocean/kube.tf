@@ -3,7 +3,7 @@ data "digitalocean_kubernetes_versions" "example" {}
 resource "digitalocean_kubernetes_cluster" "atk" {
   name = "atk"
   region = "lon1"
-  version = data.digitalocean_kubernetes_versions.example.latest
+  version = data.digitalocean_kubernetes_versions.example.latest_version
   #version = "1.16.6-do.2"
   tags = ["production"]
   //noinspection MissingProperty
