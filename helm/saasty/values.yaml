@@ -18,7 +18,7 @@ replicaCount: 1
 version: develop
 
 image:
-  repository: r.cfcr.io/romaninsh/saasty
+  repository: registry.digitalocean.com/saasty
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []

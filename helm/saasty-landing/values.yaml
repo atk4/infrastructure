@@ -18,7 +18,7 @@ replicaCount: 1
 version: latest
 
 image:
-  repository: r.cfcr.io/romaninsh/saasty/landing
+  repository: registry.digitalocean.com/saasty/landing
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
