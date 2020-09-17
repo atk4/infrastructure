@@ -5,6 +5,9 @@ metadata:
   labels:
     {{- include "atk-demo.labels" . | nindent 4 }}
 spec:
+
+
+
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
