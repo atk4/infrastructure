@@ -5,9 +5,6 @@ metadata:
   labels:
     {{- include "atk-demo.labels" . | nindent 4 }}
 spec:
-
-
-
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
@@ -45,7 +42,7 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-            CLOUD_DEMO: "1"
+            #CLOUD_DEMO: "1"
             {{- toYaml .Values.env | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
