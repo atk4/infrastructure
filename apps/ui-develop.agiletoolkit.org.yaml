@@ -1,46 +1,46 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: ui-develop.agiletoolkit.org
-spec:
-  destination:
-    namespace: atk-demo-develop
-    server: 'https://kubernetes.default.svc'
-  ignoreDifferences:
-    - group: apps
-      kind: Deployment
-      jsonPointers:
-        - /spec/template/spec/containers/0/image
-  source:
-    path: helm/atk-demo
-    repoURL: 'https://github.com/atk4/infrastructure/'
-    targetRevision: HEAD
-    helm:
-      parameters:
-        - name: replicaCount
-          value: '1'
-
-      values: |
-        version: develop
-        fullnameOverride: atk-demo
-        imagePullSecrets:
-          - name: cfcr
-        env:
-          - name: DSN
-            valueFrom:
-              secretKeyRef:
-                name: db-connection
-                key: ro_dsn
-
-        ingress:
-          enabled: true
-          annotations:
-            kubernetes.io/ingress.class: traefik
-          hosts:
-            - host: ui-develop.agiletoolkit.org
-              paths: ["/"]
-  project: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: ui-develop.agiletoolkit.org
+#spec:
+#  destination:
+#    namespace: atk-demo-develop
+#    server: 'https://kubernetes.default.svc'
+#  ignoreDifferences:
+#    - group: apps
+#      kind: Deployment
+#      jsonPointers:
+#        - /spec/template/spec/containers/0/image
+#  source:
+#    path: helm/atk-demo
+#    repoURL: 'https://github.com/atk4/infrastructure/'
+#    targetRevision: HEAD
+#    helm:
+#      parameters:
+#        - name: replicaCount
+#          value: '1'
+#
+#      values: |
+#        version: develop
+#        fullnameOverride: atk-demo
+#        imagePullSecrets:
+#          - name: cfcr
+#        env:
+#          - name: DSN
+#            valueFrom:
+#              secretKeyRef:
+#                name: db-connection
+#                key: ro_dsn
+#
+#        ingress:
+#          enabled: true
+#          annotations:
+#            kubernetes.io/ingress.class: traefik
+#          hosts:
+#            - host: ui-develop.agiletoolkit.org
+#              paths: ["/"]
+#  project: default
+#  syncPolicy:
+#    automated:
+#      prune: true
+#      selfHeal: true
