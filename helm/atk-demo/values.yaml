@@ -18,7 +18,7 @@ replicaCount: 1
 version: latest
 
 image:
-  repository: registry.digitalocean.com/atk4/ui
+  repository: atk4/ui-demo
   pullPolicy: Always
 
 imagePullSecrets: []
