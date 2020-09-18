@@ -6,11 +6,11 @@ spec:
   destination:
     namespace: atk-demo
     server: 'https://kubernetes.default.svc'
-#  ignoreDifferences:
-#    - group: apps
-#      kind: Deployment
-#      jsonPointers:
-#        - /spec/template/spec/containers/0/image
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/template/spec/containers/0/image
   source:
     path: helm/atk-demo
     repoURL: 'https://github.com/atk4/infrastructure/'
