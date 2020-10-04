@@ -15,8 +15,8 @@ resource "digitalocean_kubernetes_cluster" "atk" {
     size = "s-1vcpu-2gb"
     # node_count = 1
     auto_scale = true
-    min_nodes = 1
-    max_nodes = 2
+    min_nodes = 2
+    max_nodes = 3
   }
 }
 resource "digitalocean_project_resources" "barfoo" {
