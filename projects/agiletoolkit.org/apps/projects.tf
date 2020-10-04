@@ -33,6 +33,19 @@ module "atk-demo-develop" {
   }
 }
 
+# Regular full-access mysql grant
+module "agiletoolkit-org" {
+  source = "./basic-app"
+
+  host = var.MYSQL_ENDPOINT
+  name = "agiletoolkit-org"
+
+  permissions = {
+    "admin": "all privileges"
+    "ro": "select"
+  }
+}
+
 # Saasty preview app context
 module "saasty-preview" {
   source = "./static-app"
@@ -54,10 +67,13 @@ resource "kubernetes_secret" "app-extra-dsn" {
   }
 }
 
-
-
 module "saasty-landing" {
   source = "./static-app"
 
   name = "saasty-landing"
+}
+module "nearly-guru" {
+  source = "./static-app"
+
+  name = "nearly-guru"
 }
