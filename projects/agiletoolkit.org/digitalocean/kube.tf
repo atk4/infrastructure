@@ -1,6 +1,9 @@
 data "digitalocean_kubernetes_versions" "example" {}
 
 resource "digitalocean_kubernetes_cluster" "atk" {
+  lifecycle {
+    ignore_changes = ["version"]
+  }
   name = "atk"
   region = "lon1"
   version = data.digitalocean_kubernetes_versions.example.latest_version
