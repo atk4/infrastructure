@@ -55,6 +55,15 @@ module "atk4-ui" {
 }
 
 
+module "atk4-release-test" {
+  source = "./addon"
+  name = "release-test"
+  description = "Release tests"
+  topics = ["release", "test"]
+
+  access = local.addon
+}
+
 module "atk4-api" {
   source = "./addon"
   name = "api"
