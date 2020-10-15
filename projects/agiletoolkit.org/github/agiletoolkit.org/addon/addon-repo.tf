@@ -60,6 +60,7 @@ resource "github_repository" "addon" {
   has_issues    = true
   has_downloads = false
   topics        = concat(["agile", "atk4", "php"], var.topics)
+  vulnerability_alerts = true
 }
 
 resource "github_issue_label" "test_repo" {
