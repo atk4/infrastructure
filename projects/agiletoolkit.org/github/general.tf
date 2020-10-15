@@ -5,6 +5,9 @@ terraform {
       name = "atk4-github"
     }
   }
+  required_providers {
+    github = "~> 3.1"
+  }
 }
 required_providers {
   github = "~> 3.1"
