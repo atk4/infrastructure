@@ -104,8 +104,8 @@ resource "github_repository_collaborator" "contributor" {
 resource "github_branch_protection" "addon-develop" {
   count = var.protect_develop ? 1 : 0
 
-  branch     = "develop"
-  repository = github_repository.addon.name
+  pattern     = "develop"
+  repository_id = github_repository.addon.node_id
   required_status_checks {}
   required_pull_request_reviews {
     required_approving_review_count = 1
