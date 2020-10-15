@@ -6,3 +6,6 @@ terraform {
     }
   }
 }
+required_providers {
+  github = "~> 3.1"
+}
