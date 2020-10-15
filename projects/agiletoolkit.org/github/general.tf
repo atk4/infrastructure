@@ -9,6 +9,3 @@ terraform {
     github = "~> 3.1"
   }
 }
-required_providers {
-  github = "~> 3.1"
-}
