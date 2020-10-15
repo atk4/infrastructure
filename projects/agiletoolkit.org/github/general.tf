@@ -6,6 +6,9 @@ terraform {
     }
   }
   required_providers {
-    github = "~> 3.1"
+    github = {
+      source = "hashicorp/github"
+      version = "~> 3.1"
+    }
   }
 }
