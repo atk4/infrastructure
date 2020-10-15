@@ -65,15 +65,6 @@ module "atk4-invoice" {
   access = local.addon
 }
 
-module "atk4-schema" {
-  source = "./addon"
-  name = "schema"
-  description = "Few classes built on top of Agile Data that can take care of your SQL database schema"
-  topics = ["schema"]
-
-  access = local.addon
-}
-
 module "atk4-validate" {
   source = "./addon"
   name = "validate"
