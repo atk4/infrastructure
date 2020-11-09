@@ -49,6 +49,7 @@ module "agiletoolkit-org" {
 module "saasty-preview" {
   source = "./static-app"
   name = "saasty-preview"
+  creds = var.DOCKER_CREDS
 }
 resource "mysql_database" "atk-demo" {
   name = "saasty-preview"
@@ -69,6 +70,7 @@ module "saasty-landing" {
   source = "./static-app"
 
   name = "saasty-landing"
+  creds = var.DOCKER_CREDS
 }
 module "nearly-guru" {
   source = "./static-app"

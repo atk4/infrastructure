@@ -9,7 +9,6 @@ resource "kubernetes_namespace" "apps" {
 }
 
 variable "creds" {
-  default = ""
 }
 
 resource "kubernetes_secret" "example" {
