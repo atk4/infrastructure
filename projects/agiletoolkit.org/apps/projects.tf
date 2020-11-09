@@ -74,5 +74,5 @@ module "nearly-guru" {
   source = "./static-app"
 
   name = "nearly-guru"
-  creds = digitalocean_container_registry_docker_credentials.saasty.docker_credentials
+  creds = var.DOCKER_CREDS
 }
