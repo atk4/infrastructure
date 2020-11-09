@@ -13,7 +13,6 @@ variable "creds" {
 }
 
 resource "kubernetes_secret" "example" {
-  count = var.creds == ""?0:1
 
   metadata {
     name = "docker-cfg"
