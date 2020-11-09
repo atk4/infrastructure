@@ -6,6 +6,9 @@ terraform {
     mysql = {
       source = "terraform-providers/mysql"
     }
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+    }
   }
   required_version = ">= 0.13"
 }
