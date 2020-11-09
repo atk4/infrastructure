@@ -40,6 +40,8 @@ spec:
               paths: ["/"]
             - host: www.agiletoolkit.org
               paths: ["/"]
+            - host: www3.agiletoolkit.org
+              paths: ["/"]
   project: default
   syncPolicy:
     automated:
