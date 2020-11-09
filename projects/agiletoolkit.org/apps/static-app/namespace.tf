@@ -8,3 +8,23 @@ resource "kubernetes_namespace" "apps" {
   }
 }
 
+variable "creds" {
+  default = ""
+}
+
+resource "kubernetes_secret" "example" {
+  count = creds == ""?0:1
+
+  metadata {
+    name = "docker-cfg"
+    namespace = var.name
+  }
+
+  data = {
+    ".dockerconfigjson" = var.creds
+  }
+
+  type = "kubernetes.io/dockerconfigjson"
+}
+
+

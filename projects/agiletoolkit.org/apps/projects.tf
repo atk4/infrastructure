@@ -5,7 +5,9 @@ variable "MYSQL_ENDPOINT" {}
 variable "MYSQL_USERNAME" {}
 variable "MYSQL_PASSWORD" {}
 
-
+resource "digitalocean_container_registry_docker_credentials" "saasty" {
+  registry_name = "saasty"
+}
 
 # Regular full-access mysql grant
 module "atk-demo" {
@@ -66,7 +68,6 @@ resource "kubernetes_secret" "app-extra-dsn" {
     "admin_dsn": "mysql://${var.MYSQL_USERNAME}:${var.MYSQL_PASSWORD}@${var.MYSQL_ENDPOINT}/saasty-preview"
   }
 }
-
 module "saasty-landing" {
   source = "./static-app"
 
@@ -76,4 +77,5 @@ module "nearly-guru" {
   source = "./static-app"
 
   name = "nearly-guru"
+  creds = digitalocean_container_registry_docker_credentials.saasty.docker_credentials
 }
