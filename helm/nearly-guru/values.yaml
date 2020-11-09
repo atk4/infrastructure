@@ -1,25 +1,14 @@
-# Default values for atk-demo.
+# Default values for nearly-guru.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-
-
-
-
-
-
-
-
-
-
-
 replicaCount: 1
 
-version: latest
-
 image:
-  repository: registry.digitalocean.com/saasty/landing
+  repository: registry.digitalocean.com/saasty/nearly.guru
   pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -32,7 +21,9 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name:
+  name: ""
+
+podAnnotations: {}
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -57,9 +48,14 @@ ingress:
     - host: www.example.com
       paths: ['/']
 
-env: {}
 
 resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
 
 nodeSelector: {}
 
