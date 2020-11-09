@@ -78,3 +78,9 @@ module "nearly-guru" {
   name = "nearly-guru"
   creds = var.DOCKER_CREDS
 }
+module "redirects" {
+  source = "./static-app"
+
+  name = "redirects"
+  creds = var.DOCKER_CREDS
+}
