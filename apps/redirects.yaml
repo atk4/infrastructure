@@ -34,6 +34,12 @@ spec:
           hosts:
             - host: test.nearly.guru
               paths: ["/"]
+            - host: dabasdraugi.lv
+              paths: ["/"]
+            - host: agiletoolkit.org
+              paths: ["/"]
+            - host: www.agiletoolkit.org
+              paths: ["/"]
   project: default
   syncPolicy:
     automated:
