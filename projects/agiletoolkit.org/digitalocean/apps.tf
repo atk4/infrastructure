@@ -11,6 +11,9 @@ resource "digitalocean_project_resources" "db_atk" {
   resources = [ digitalocean_database_cluster.db.urn ]
 }
 
+resource "digitalocean_container_registry_docker_credentials" "saasty" {
+  registry_name = "saasty"
+}
 
 module "atk4-apps" {
   source = "../../../root/workspace"
@@ -27,6 +30,8 @@ module "atk4-apps" {
     MYSQL_USERNAME: digitalocean_database_cluster.db.user
     MYSQL_PASSWORD: digitalocean_database_cluster.db.password
     MYSQL_TLS_CONFIG: "skip-verify"
+
+    TF_VARS_DOCKER_CREDS: digitalocean_container_registry_docker_credentials.saasty.docker_credentials
 
     TF_VAR_MYSQL_USERNAME: digitalocean_database_cluster.db.user
     TF_VAR_MYSQL_PASSWORD: digitalocean_database_cluster.db.password

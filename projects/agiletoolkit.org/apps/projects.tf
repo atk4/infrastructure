@@ -4,10 +4,7 @@ provider "mysql" {}
 variable "MYSQL_ENDPOINT" {}
 variable "MYSQL_USERNAME" {}
 variable "MYSQL_PASSWORD" {}
-
-resource "digitalocean_container_registry_docker_credentials" "saasty" {
-  registry_name = "saasty"
-}
+variable "DOCKER_CREDS" {}
 
 # Regular full-access mysql grant
 module "atk-demo" {
