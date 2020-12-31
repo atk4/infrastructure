@@ -32,6 +32,12 @@ spec:
           annotations:
             kubernetes.io/ingress.class: traefik
           hosts:
+            - host: saasty.io
+              paths: ["/"]
+            - host: saasty.com
+              paths: ["/"]
+            - host: www.saasty.com
+              paths: ["/"]
             - host: test.nearly.guru
               paths: ["/"]
             - host: dabasdraugi.lv
