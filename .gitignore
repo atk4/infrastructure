@@ -5,3 +5,4 @@ terraform.tfstate.backup
 .terraform
 .idea
 remote.hcl
+/projects/agiletoolkit.org/codefresh/terraform-provider-codefresh/
