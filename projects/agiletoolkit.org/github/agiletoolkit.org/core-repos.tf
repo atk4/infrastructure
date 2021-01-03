@@ -72,3 +72,11 @@ module "atk4-api" {
 
   access = local.addon
 }
+module "atk4-agiletoolkit-org" {
+  source = "./addon"
+  name = "agiletoolkit-org"
+  description = "Website for agiletoolkit.org website"
+  topics = ["website"]
+
+  access = local.addon
+}

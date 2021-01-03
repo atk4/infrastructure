@@ -1,3 +1,5 @@
+# Generic web project built with GitOps
+
 version: "1.0"
 stages:
   - clone

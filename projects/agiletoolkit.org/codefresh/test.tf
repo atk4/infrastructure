@@ -19,5 +19,9 @@ resource "codefresh_pipeline" "agiletoolkit-org" {
       revision = "master"
       context = "github"
     }
+    variables = {
+      PROJECT = "atk4/ui"
+    }
   }
+
 }
