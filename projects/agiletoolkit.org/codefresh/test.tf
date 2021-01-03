@@ -14,9 +14,9 @@ resource "codefresh_pipeline" "agiletoolkit-org" {
   spec {
     concurrency = 1
     spec_template {
-      repo = "atk4/ui"
-      path = "./.codefresh/ui-build-deploy.yml"
-      revision = "develop"
+      repo = "atk4/infrastructure"
+      path = "./projects/agiletoolkit.org/codefresh/generic-project.yml"
+      revision = "master"
       context = "github"
     }
   }
