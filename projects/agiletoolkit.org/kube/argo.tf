@@ -8,17 +8,12 @@ resource "random_password" "argo" {
   length = 10
 }
 
-data "helm_repository" "argocd" {
-  name = "argo"
-  url = "https://argoproj.github.io/argo-helm"
-}
-
 resource "helm_release" "argocd" {
+  repository = "https://argoproj.github.io/argo-helm"
   chart = "argo-cd"
   version = "2.7.0"
   name = "argo"
   namespace = "argocd"
-  repository = data.helm_repository.argocd.url
 
 
   set {

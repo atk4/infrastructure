@@ -3,17 +3,13 @@ resource "kubernetes_namespace" "ns" {
     name = "nfs-server"
   }
 }
-data "helm_repository" "storage-charts" {
-  name = "argo"
-  url = "https://kubernetes-charts.storage.googleapis.com/"
-}
 
 resource "helm_release" "nfs-server" {
   chart = "nfs-server-provisioner"
   version = "1.0.0"
   name = "nfs-server"
   namespace = "nfs-server"
-  repository = data.helm_repository.storage-charts.url
+  repository = "https://kubernetes-charts.storage.googleapis.com/"
 
 
   set {

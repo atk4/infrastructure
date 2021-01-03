@@ -1,10 +1,5 @@
 # Will install traefik here
 
-data "helm_repository" "helm" {
-  name = "helm"
-  url = "https://kubernetes-charts.storage.googleapis.com"
-}
-
 resource "kubernetes_secret" "do-token" {
   metadata {
     name = "acme-dnsprovider-config"
@@ -21,7 +16,7 @@ resource "helm_release" "traefik" {
   chart = "traefik"
   name = "traefik"
   namespace = "kube-system"
-  repository = data.helm_repository.helm.url
+  repository = "https://kubernetes-charts.storage.googleapis.com"
 
 //  set {
 //    name = "configs.secret.argocdServerAdminPassword"
