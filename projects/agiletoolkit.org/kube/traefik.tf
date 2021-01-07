@@ -79,7 +79,7 @@ resource "digitalocean_record" "traefik" {
   ttl = 60
   value = data.kubernetes_service.traefik.load_balancer_ingress[0].ip
 }
-resource "digitalocean_record" "traefik" {
+resource "digitalocean_record" "saasty-a" {
   domain = "saasty.io"
   type = "A"
   name = "@"
