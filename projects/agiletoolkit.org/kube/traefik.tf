@@ -41,7 +41,7 @@ acme:
   staging: false
   email: me@nearly.guru
   logging: true
-  challengeType: "dns-01"
+  challengeType: "tls-alpn-01"
   domains:
     enabled: true
     domainsList:
