@@ -16,7 +16,7 @@ resource "helm_release" "traefik" {
   chart = "traefik"
   name = "traefik"
   namespace = "kube-system"
-  repository = "https://kubernetes-charts.storage.googleapis.com"
+  repository = "https://charts.helm.sh/stable"
 
 //  set {
 //    name = "configs.secret.argocdServerAdminPassword"
