@@ -84,3 +84,9 @@ module "redirects" {
   name = "redirects"
   creds = var.DOCKER_CREDS
 }
+module "agiletoolkit-org" {
+  source = "./static-app"
+
+  name = "agiletoolkit-org"
+  creds = var.DOCKER_CREDS
+}
