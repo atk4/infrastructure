@@ -16,7 +16,7 @@ resource "helm_release" "traefik" {
   chart = "traefik"
   name = "traefik"
   namespace = "kube-system"
-  repository = "https://kubernetes-charts.storage.googleapis.com"
+  repository = "https://charts.helm.sh/stable"
 
 //  set {
 //    name = "configs.secret.argocdServerAdminPassword"
@@ -41,7 +41,7 @@ acme:
   staging: false
   email: me@nearly.guru
   logging: true
-  challengeType: "dns-01"
+  challengeType: "tls-alpn-01"
   domains:
     enabled: true
     domainsList:
@@ -76,6 +76,13 @@ resource "digitalocean_record" "traefik" {
   domain = "agiletoolkit.org"
   type = "A"
   name = "traefik"
+  ttl = 60
+  value = data.kubernetes_service.traefik.load_balancer_ingress[0].ip
+}
+resource "digitalocean_record" "saasty-a" {
+  domain = "saasty.io"
+  type = "A"
+  name = "@"
   ttl = 60
   value = data.kubernetes_service.traefik.load_balancer_ingress[0].ip
 }
